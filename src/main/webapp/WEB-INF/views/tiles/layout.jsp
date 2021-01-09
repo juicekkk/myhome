@@ -6,47 +6,26 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>제목</title>
-    <style>
-        #header{
-            width:100%;
-            height:50px;
-            text-align: center;
-            background-color: aqua;
-        }
-        #left{
-            float:left;
-            width:15%;
-            background-color: gray;
-        }
-        #main{
-            float:left;
-            width:85%;
-            background-color: lime;
-        }
-        #footer{
-            width: 100%;
-            height: 50px;
-            text-align: center;
-            background-color: orange;
-            clear:both;
-        }
-        #left, #main{
-            min-height: 600px;
-        }
-    </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="${path}/resources/js/common.js"></script>
     <link href="${path}/resources/css/main.css" rel="stylesheet"/>
-
 </head>
-
 <body>
-    <div style="width:100%; height:100%;">
-        <div id="header"><tiles:insertAttribute name="header" /></div>
-        <div id="main"><tiles:insertAttribute name="body" /></div>
-        <div id="footer"><tiles:insertAttribute name="footer" /></div>
-    </div>
+<div style="width:100%; height:100%;">
+    <div id="header"><tiles:insertAttribute name="header" /></div>
+    <div id="left" class="for_m"><tiles:insertAttribute name="left" /></div>
+    <div id="main"><tiles:insertAttribute name="body" /></div>
+    <div id="footer"><tiles:insertAttribute name="footer" /></div>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+
+    });
+</script>
 </body>
 </html>

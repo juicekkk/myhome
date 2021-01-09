@@ -1,4 +1,4 @@
-package com.jsk.mylogue;
+package com.jsk.mylogue.main.Controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class MainController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -33,7 +33,17 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "main/home";
+		return "home";
+	}
+
+	@RequestMapping("testPage.do")
+	public String testPage() {
+		return "test.page";
+	}
+
+	@RequestMapping("main.do")
+	public String main() {
+		return "main/index.page";
 	}
 
 }
