@@ -33,7 +33,7 @@
 
     $('.menu_icon').click(function(){
         $('#leftWrap').animate({"left": '+=350px'});
-        $('#leftCloseBtn').animate({"left": '+=650px'});
+        $('#leftCloseBtn').animate({"left": '+=620px'});
         $('.darken').show();
     });
 

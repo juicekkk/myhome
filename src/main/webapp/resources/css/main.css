@@ -68,7 +68,7 @@ body { margin: 0; }
     width: 40px;
 }
 #leftWrap {
-    width: 300px;
+    width: 270px;
     height: 100%;
     position: absolute;
     top: 0;
@@ -77,11 +77,9 @@ body { margin: 0; }
     left: -350px;
 }
 
-#leftWrap a {
-    text-decoration: none;
-}
-#leftWrap a li {
-    list-style: none;
+#leftWrap a { text-decoration: none; }
+#leftWrap a li { list-style: none;font-size: 25px; color: #000; list-style: none; text-align: center; padding: 10px; text-decoration: underline; text-underline-position: under; text-decoration-color: #0d7f36;}
+#leftWrap .title { text-align: center; font-size: 2em; display: block; margin: 10px 0px 10px 0px;
 }
 
 #main{
