@@ -5,7 +5,7 @@
 
     <div class="for_pc">
         <div class="menuWrap">
-            <a href="#"><li>HOME_PC</li></a>
+            <a href="#"><li>MY LOGUE</li></a>
             <a href="#"><li>MENU1</li></a>
             <a href="#"><li>MENU2</li></a>
             <a href="#"><li>MENU3</li></a>
@@ -15,10 +15,7 @@
     <div class="for_m">
         <div class="menuWrap">
             <img class="menu_icon" src="${path}/resources/images/menu_icon.png">
-            <a href="#"><li class="active">HOME_MO</li></a>
-            <a href="#"><li>MENU1</li></a>
-            <a href="#"><li>MENU2</li></a>
-            <a href="#"><li>MENU3</li></a>
+            <a href="#"><li class="active">MY LOGUE</li></a>
         </div>
     </div>
 
