@@ -17,7 +17,7 @@ body { margin: 0; }
 .backgroundBottom {
     height: 0px;
     border-top: 500px solid transparent;
-    border-right: 800px solid #cecece;
+    border-right: 800px solid #323232;
     width: 100%;
     position: fixed;
     right: 0;
@@ -52,11 +52,13 @@ body { margin: 0; }
     .mainWord { display: block !important; text-align: center !important; margin-top: 200px !important; height: 160px !important; }
     .mainIcon { margin: 10px;}
     .mainIcons { justify-content: space-evenly !important;}
+    .emphasis { color: #ffca4f !important;}
 }
 @media ( max-width: 375px ) {
-    .mainWord { margin-top: 120px !important; height: 150px !important;}
+    .mainWord { margin-top: 150px !important; height: 150px !important;}
     .mainWord .subtitle { font-size: 18px;}
     .mainWord .title { font-size: 20px;}
+    .title { color: #ffca4f !important;}
 }
 @media ( max-width: 360px ) {
     .mainWord { margin-top: 120px !important; height: 110px !important;}
@@ -101,7 +103,7 @@ body { margin: 0; }
 #leftCloseBtn {
     width: 50px;
     height: 50px;
-    background: #cecece;
+    background: #323232;
     position: absolute;
     left: -350px;
     top: 0;
@@ -122,7 +124,7 @@ body { margin: 0; }
 }
 
 #leftWrap a { text-decoration: none; }
-#leftWrap a li { list-style: none;font-size: 25px; color: #000; list-style: none; text-align: center; padding: 10px; text-decoration: underline; text-underline-position: under; text-decoration-color: #987931;}
+#leftWrap a li { list-style: none;font-size: 25px; color: #000; list-style: none; text-align: center; padding: 10px; text-decoration: underline; text-underline-position: under; text-decoration-color: #4a4a4a;}
 #leftWrap .title { text-align: center; font-size: 2em; display: block; margin: 10px 0px 10px 0px;
 }
 
@@ -159,7 +161,7 @@ body { margin: 0; }
     width: 100%;
     height: 60px;
     text-align: center;
-    background-color: #cecece;
+    background-color: #323232;
     position: fixed;
     bottom: 0;
 }

@@ -9,7 +9,7 @@
 
     <div class="mainWord">
         <h2 class="subtitle">How was your today ?</h2>
-        <h1 class="title">LOGUE YOUR DAILY LIFE</h1>
+        <h1 class="title">LOGUE YOUR <span class="emphasis">DAILY LIFE</span></h1>
     </div>
 
 
@@ -23,10 +23,10 @@
             <img src="${path}/resources/images/mainIcon2.png">
         </div>
         <div class="mainIcon">
-            <img src="${path}/resources/images/mainIcon3.png" style="width: 85px; margin-top: 10px; height: 90px;">
+            <img src="${path}/resources/images/mainIcon4.png" style="width: 90px; margin-top: 10px;">
         </div>
         <div class="mainIcon">
-            <img src="${path}/resources/images/mainIcon4.png" style="width: 90px; margin-top: 10px;">
+            <img src="${path}/resources/images/mainIcon3.png" style="width: 85px; margin-top: 10px; height: 90px;">
         </div>
     </div>
 
