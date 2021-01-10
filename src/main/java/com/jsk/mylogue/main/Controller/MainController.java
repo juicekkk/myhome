@@ -33,17 +33,38 @@ public class MainController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "main/index.page";
 	}
 
-	@RequestMapping("testPage.do")
-	public String testPage() {
-		return "test.page";
-	}
 
 	@RequestMapping("main.do")
 	public String main() {
 		return "main/index.page";
+	}
+
+	@RequestMapping("eat.do")
+	public String eatLogue() {
+		return "logue/eat.page";
+	}
+
+	@RequestMapping("hobby.do")
+	public String hobbyLogue() {
+		return "logue/hobby.page";
+	}
+
+	@RequestMapping("travel.do")
+	public String travelLogue() {
+		return "logue/travel.page";
+	}
+
+	@RequestMapping("daily.do")
+	public String dailyLogue() {
+		return "logue/daily.page";
+	}
+
+	@RequestMapping("etc.do")
+	public String etcLogue() {
+		return "logue/etc.page";
 	}
 
 }

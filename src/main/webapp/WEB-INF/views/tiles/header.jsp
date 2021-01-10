@@ -5,10 +5,12 @@
 
     <div class="for_pc">
         <div class="menuWrap">
-            <a href="#"><li>MY LOGUE</li></a>
-            <a href="#"><li>MENU1</li></a>
-            <a href="#"><li>MENU2</li></a>
-            <a href="#"><li>MENU3</li></a>
+            <a href="#"><li>HOME</li></a>
+            <a href="#"><li>EAT</li></a>
+            <a href="#"><li>HOBBY</li></a>
+            <a href="#"><li>TRAVEL</li></a>
+            <a href="#"><li>DAILY</li></a>
+            <a href="#"><li>ETC</li></a>
         </div>
     </div>
 

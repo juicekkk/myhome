@@ -6,9 +6,11 @@
     <hr style="display: block; background: #4a4a4a; height: 5px; margin: 0 auto; border: navajowhite; width: 80%; border-radius: 15%;" />
     <br>
 
-    <a href="#"><li style="margin-top: 10px;">MENU1</li></a>
-    <a href="#"><li>MENU2</li></a>
-    <a href="#"><li>MENU3</li></a>
+    <a href="#"><li style="margin-top: 10px;">EAT</li></a>
+    <a href="#"><li>HOBBY</li></a>
+    <a href="#"><li>TRAVEL</li></a>
+    <a href="#"><li>DAILY</li></a>
+    <a href="#"><li>ETC</li></a>
 
     <div style="position: absolute; bottom: 0; width: 100%; height: 40px; background-color: #323232;"></div>
 </div>

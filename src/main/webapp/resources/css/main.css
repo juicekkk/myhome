@@ -95,6 +95,7 @@ body { margin: 0; }
     list-style:none;
     color: #000;
 }
+.menuWrap li:hover { font-weight: bold;}
 .menuWrap a{
     text-decoration: none;
 }
