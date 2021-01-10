@@ -16,10 +16,14 @@
 </head>
 <body>
 <div style="width:100%; height:100%;">
+    <div class="backgroundTop"></div>
+
     <div id="header"><tiles:insertAttribute name="header" /></div>
     <div id="left" class="for_m"><tiles:insertAttribute name="left" /></div>
     <div id="main"><tiles:insertAttribute name="body" /></div>
     <div id="footer"><tiles:insertAttribute name="footer" /></div>
+
+    <div class="backgroundBottom"></div>
 </div>
 
 <script type="text/javascript">

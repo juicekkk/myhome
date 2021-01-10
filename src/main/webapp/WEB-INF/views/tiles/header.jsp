@@ -5,12 +5,12 @@
 
     <div class="for_pc">
         <div class="menuWrap">
-            <a href="#"><li>HOME</li></a>
-            <a href="#"><li>EAT</li></a>
-            <a href="#"><li>HOBBY</li></a>
-            <a href="#"><li>TRAVEL</li></a>
-            <a href="#"><li>DAILY</li></a>
-            <a href="#"><li>ETC</li></a>
+            <a href="/"><li>HOME</li></a>
+            <a href="/eat.do"><li>EAT</li></a>
+            <a href="/hobby.do"><li>HOBBY</li></a>
+            <a href="/travel.do"><li>TRAVEL</li></a>
+            <a href="/daily.do"><li>DAILY</li></a>
+            <a href="/etc.do"><li>ETC</li></a>
         </div>
     </div>
 
