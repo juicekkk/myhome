@@ -14,25 +14,25 @@
 
     <div class="contents">
         <div class="content">
-            <img src="${path}/resources/images/contents/board1/thumb/thumb.jpg">
+            <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb.jpg">
             <span class="sub">그들의 우리 봄바람</span>
             <span class="main">산야에 이것은 아름다우냐?</span>
         </div>
 
         <div class="content">
-            <img src="${path}/resources/images/contents/board1/thumb/thumb2.jpg">
+            <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb2.jpg">
             <span class="sub">노래하며 피가 영락과 칼이다</span>
             <span class="main">그들은 천지는 것이다</span>
         </div>
 
         <div class="content">
-            <img src="${path}/resources/images/contents/board1/thumb/thumb3.jpg">
+            <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb3.jpg">
             <span class="sub">무한한 끓는 별</span>
             <span class="main">가치를 생의 대한 소리다</span>
         </div>
 
         <div class="content">
-            <img src="${path}/resources/images/contents/board1/thumb/thumb4.jpg">
+            <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb4.jpg">
             <span class="sub">바야흐로 떄는 사막이다</span>
             <span class="main">봄날의 창공에 뿐이다</span>
         </div>

@@ -14,18 +14,16 @@
 
     <div class="contents">
         <div class="content">
-            <img src="${path}/resources/images/contents/board1/thumb/thumb.jpg">
+            <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb.jpg">
             <span class="sub">그와 인생에 있는 꽃이</span>
             <span class="main">인생에 별과 보이는 살 적인</span>
         </div>
 
         <div class="content">
-            <img src="${path}/resources/images/contents/board1/thumb/thumb2.jpg">
+            <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb2.jpg">
             <span class="sub">무엇이 아니더면</span>
             <span class="main">그림자는 천하를 피어나는</span>
         </div>
-
-
     </div>
 
 </div>

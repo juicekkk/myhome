@@ -14,7 +14,7 @@
 
     <div class="contents">
         <div class="content">
-            <img src="${path}/resources/images/contents/board1/thumb/thumb.jpg">
+            <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb.jpg">
             <span class="sub">가장 노래하며 사는가</span>
             <span class="main">풀이 우리는 사는가, 그림자는 트고</span>
         </div>

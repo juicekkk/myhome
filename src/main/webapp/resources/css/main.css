@@ -12,7 +12,21 @@ body { margin: 0; font-family: NanumGothic;}
 .for_pc { display: block; }
 .for_m { display: none; }
 
-
+.scale {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
+}
+.scale:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
 /* HEADER */
 #header { width: 100%; margin: 0 auto; text-align: center; background: #ffca4f; position: fixed; top: 0; display: flex; align-items: center; justify-content: center; height: 80px; }
 .menu_icon { position: absolute; left: 12px; width: 40px; top: 14px; }
@@ -32,7 +46,7 @@ body { margin: 0; font-family: NanumGothic;}
 /* MAIN */
 #main{ width: 100%; margin-top: 80px; margin-bottom: 100px; }
 .mainWord { height: 500px; display: flex; align-items: center; justify-content: center; margin-top: 150px; }
-.mainWord .subtitle { width: 100px;}
+.mainWord .subtitle { width: 100px; margin-right: 10px;}
 .mainIcons { text-align: center; display: flex; flex-wrap: wrap; width: 80%; max-width: 800px; justify-content: space-between; margin: 0 auto; }
 .mainIcons .mainIcon img { width: 100%;}
 .mainIcon { width: 100px; }
@@ -47,7 +61,7 @@ body { margin: 0; font-family: NanumGothic;}
 .boardWrap .titleWrap p:nth-child(2) { font-size: 20px; line-height: 30px;}
 
 .boardWrap .contents { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; width: 80%; max-width: 1700px; margin: 60px auto 0 auto; }
-.contents .content { margin: 0 15px 50px 15px; width: 30%;}
+.contents .content { margin: 0 15px 50px 15px; width: 30%; cursor: pointer; overflow: hidden;}
 .boardWrap .contents img,.boardWrap .contents span { display: block;}
 .boardWrap .contents img { width: 100%; margin-bottom: 30px;}
 .content .sub { font-size: 18px; color: #ffca4f; margin-bottom: 10px;}
@@ -90,6 +104,7 @@ body { margin: 0; font-family: NanumGothic;}
     .content .sub { font-size: 15px; margin-bottom: 7px;}
     .content .main { font-size: 20px;}
     .contents .empty { margin: 120px auto;}
+    .mainWord .subtitle { margin-right: 0px;}
 }
 @media ( max-width: 375px ) {
     .backgroundTop { border-bottom: 100px solid transparent; border-left: 100px solid #ffca4f;}
