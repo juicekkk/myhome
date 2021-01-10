@@ -7,7 +7,7 @@ body { margin: 0; font-family: NanumGothic;}
 .backgroundBottom { height: 0px; border-top: 500px solid transparent; border-right: 800px solid #323232; width: 100%; position: fixed; right: 0; bottom: 60px; z-index: -9; }
 .backgroundTop { height: 0px; border-bottom: 500px solid transparent; border-left: 800px solid #ffca4f; width: 100%; position: fixed; left: 0; top: 60px; z-index: -9; }
 
-.darken { width: 100%; height: 100%; background: #000000; opacity: 80%; z-index: 9; position: absolute; left: 0; top: 0; display: none; }
+.darken { width: 100%; height: 100%; background: #000000; opacity: 80%; z-index: 9; position: fixed; left: 0; top: 0; display: none; }
 
 .for_pc { display: block; }
 .for_m { display: none; }
@@ -22,15 +22,15 @@ body { margin: 0; font-family: NanumGothic;}
 .menuWrap a{ text-decoration: none; }
 
 /* LEFT */
-#leftCloseBtn { width: 50px; height: 50px; background: #323232; position: absolute; left: -350px; top: 0; z-index: 99; }
+#leftCloseBtn { width: 50px; height: 50px; background: #323232; position: fixed; left: -350px; top: 0; z-index: 99; }
 #leftCloseBtn img { padding: 5px; width: 40px; }
-#leftWrap { width: 270px; height: 100%; position: absolute; top: 0; background: #ffca4f; z-index: 99; left: -350px; }
+#leftWrap { width: 270px; height: 100%; position: fixed; top: 0; background: #ffca4f; z-index: 99; left: -350px; }
 #leftWrap a { text-decoration: none; }
 #leftWrap a li { list-style: none;font-size: 25px; color: #000; list-style: none; text-align: center; padding: 10px; text-decoration: underline; text-underline-position: under; text-decoration-color: #4a4a4a;}
 #leftWrap .title { text-align: center; font-size: 2em; display: block; margin: 10px 0px 10px 0px; }
 
 /* MAIN */
-#main{ width: 100%; margin-top: 80px; margin-bottom: 60px; }
+#main{ width: 100%; margin-top: 80px; margin-bottom: 100px; }
 .mainWord { height: 500px; display: flex; align-items: center; justify-content: center; margin-top: 150px; }
 .mainWord .subtitle { width: 100px;}
 .mainIcons { text-align: center; display: flex; flex-wrap: wrap; width: 80%; max-width: 800px; justify-content: space-between; margin: 0 auto; }
@@ -46,6 +46,20 @@ body { margin: 0; font-family: NanumGothic;}
 .boardWrap .titleWrap p:nth-child(1) { font-size: 45px; margin-bottom: 30px;}
 .boardWrap .titleWrap p:nth-child(2) { font-size: 20px; line-height: 30px;}
 
+.boardWrap .contents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    max-width: 1700px;
+    margin: 60px auto 0 auto;
+}
+.contents .content { margin: 0 15px 50px 15px; width: 30%;}
+.boardWrap .contents img,.boardWrap .contents span { display: block;}
+.boardWrap .contents img { width: 100%; margin-bottom: 30px;}
+.content .sub { font-size: 18px; color: #ffca4f; margin-bottom: 10px;}
+.content .main { font-size: 25px;}
 
 
 
@@ -55,9 +69,13 @@ body { margin: 0; font-family: NanumGothic;}
 
 
 
-
-
-/* MOBILE */
+@media ( max-width: 1400px ) {
+    .contents .content { width: 45%;}
+    .boardWrap .contents { width: 90%; justify-content: space-between;}
+}
+@media ( max-width: 950px ) {
+    .boardWrap .contents { width: 90%; }
+}
 @media ( max-width: 640px ) {
     .for_pc { display: none !important; }
     .for_m { display: block !important; }
@@ -79,6 +97,12 @@ body { margin: 0; font-family: NanumGothic;}
     .boardWrap .titleWrap { max-width: 400px; padding-top: 20px;}
     .boardWrap .titleWrap p:nth-child(1) { font-size: 30px; margin-bottom: 20px;}
     .boardWrap .titleWrap p:nth-child(2) { font-size: 15px;}
+
+    .contents .content { width: 100%; margin-bottom: 30px;}
+    .boardWrap .contents { margin: 30px auto 0 auto;}
+    .boardWrap .contents img { width: 100%; margin-bottom: 20px;}
+    .content .sub { font-size: 15px; margin-bottom: 7px;}
+    .content .main { font-size: 20px;}
 }
 @media ( max-width: 375px ) {
     .backgroundTop { border-bottom: 100px solid transparent; border-left: 100px solid #ffca4f;}
@@ -92,6 +116,9 @@ body { margin: 0; font-family: NanumGothic;}
     .boardWrap .titleWrap { max-width: 350px; padding-top: 15px;}
     .boardWrap .titleWrap p:nth-child(1) { font-size: 25px;}
     .boardWrap .titleWrap p:nth-child(2) { font-size: 13px; line-height: 20px;}
+
+    .content .sub { font-size: 13px;}
+    .content .main { font-size: 17px;}
 }
 @media ( max-width: 360px ) {
     .mainWord { margin-top: 120px !important; height: 110px !important;}
