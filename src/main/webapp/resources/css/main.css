@@ -46,27 +46,13 @@ body { margin: 0; font-family: NanumGothic;}
 .boardWrap .titleWrap p:nth-child(1) { font-size: 45px; margin-bottom: 30px;}
 .boardWrap .titleWrap p:nth-child(2) { font-size: 20px; line-height: 30px;}
 
-.boardWrap .contents {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    max-width: 1700px;
-    margin: 60px auto 0 auto;
-}
+.boardWrap .contents { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; width: 80%; max-width: 1700px; margin: 60px auto 0 auto; }
 .contents .content { margin: 0 15px 50px 15px; width: 30%;}
 .boardWrap .contents img,.boardWrap .contents span { display: block;}
 .boardWrap .contents img { width: 100%; margin-bottom: 30px;}
 .content .sub { font-size: 18px; color: #ffca4f; margin-bottom: 10px;}
 .content .main { font-size: 25px;}
-
-
-
-
-
-
-
+.contents .empty { width: 100%; text-align: center; margin: 200px auto; color: #a2a2a2; line-height: 30px;}
 
 
 @media ( max-width: 1400px ) {
@@ -103,6 +89,7 @@ body { margin: 0; font-family: NanumGothic;}
     .boardWrap .contents img { width: 100%; margin-bottom: 20px;}
     .content .sub { font-size: 15px; margin-bottom: 7px;}
     .content .main { font-size: 20px;}
+    .contents .empty { margin: 120px auto;}
 }
 @media ( max-width: 375px ) {
     .backgroundTop { border-bottom: 100px solid transparent; border-left: 100px solid #ffca4f;}
@@ -119,6 +106,7 @@ body { margin: 0; font-family: NanumGothic;}
 
     .content .sub { font-size: 13px;}
     .content .main { font-size: 17px;}
+    .contents .empty { margin: 80px auto;}
 }
 @media ( max-width: 360px ) {
     .mainWord { margin-top: 120px !important; height: 110px !important;}

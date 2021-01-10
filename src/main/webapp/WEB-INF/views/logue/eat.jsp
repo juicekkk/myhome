@@ -42,11 +42,6 @@
             <span class="main">청춘의 들어 할지니</span>
         </div>
 
-        <div class="content">
-            <img src="${path}/resources/images/contents/board1/thumb/thumb2.jpg">
-            <span class="sub">오아시스도 기쁘며</span>
-            <span class="main">사랑의 온갖</span>
-        </div>
     </div>
 
 </div>
