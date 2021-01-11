@@ -14,30 +14,40 @@
 
     <div class="contents">
         <div class="content">
-            <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb.jpg">
+            <div class="imgWrap">
+                <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb.jpg">
+            </div>
             <span class="sub">평의스러운 끝</span>
             <span class="main">그들은 이 그들의 봄바람이다</span>
         </div>
 
         <div class="content">
-            <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb2.jpg">
+            <div class="imgWrap">
+                <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb2.jpg">
+            </div>
             <span class="sub">인간의 주는 충분히 운다</span>
             <span class="main">청춘의 들어 할지니</span>
         </div>
 
         <div class="content">
-            <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb3.jpg">
+            <div class="imgWrap">
+                <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb3.jpg">
+            </div>
             <span class="sub">보이는 있음으로</span>
             <span class="main">찾아다녀도, 사는가, 되려니와</span>
         </div>
         <div class="content">
-            <img class="noImg" src="${path}/resources/images/no_Image.png">
+            <div class="imgWrap">
+                <img class="noImg" src="${path}/resources/images/no_Image.png">
+            </div>
             <span class="sub">품에 얼마나</span>
             <span class="main">커다란 새가 곧 청춘은 꽃이 사막이다</span>
         </div>
 
         <div class="content">
-            <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb4.jpg">
+            <div class="imgWrap">
+                <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb4.jpg">
+            </div>
             <span class="sub">열매를 관현악이며</span>
             <span class="main">청춘의 들어 할지니</span>
         </div>
