@@ -5,7 +5,7 @@
 
 
 </style>
-<div class="boardWrap">
+<div class="boardWrap type1">
 
     <div class="titleWrap">
         <p>커다란 눈이 되려니와 칼이다</p>

@@ -27,6 +27,7 @@ body { margin: 0; font-family: NanumGothic;}
     -ms-transform: scale(1.1);
     -o-transform: scale(1.1);
 }
+.noImg { position: relative; left: 50%; width: 50% !important; transform: translate(-50%,0%);}
 /* HEADER */
 #header { width: 100%; margin: 0 auto; text-align: center; background: #ffca4f; position: fixed; top: 0; display: flex; align-items: center; justify-content: center; height: 80px; z-index: 99;}
 .menu_icon { position: absolute; left: 12px; width: 40px; top: 14px; }
@@ -44,7 +45,7 @@ body { margin: 0; font-family: NanumGothic;}
 #leftWrap .title { text-align: center; font-size: 2em; display: block; margin: 10px 0px 10px 0px; }
 
 /* MAIN */
-#main{ width: 100%; margin-top: 80px; margin-bottom: 100px; }
+#main{ width: 100%; margin-top: 80px; margin-bottom: 200px; }
 .mainWord { height: 500px; display: flex; align-items: center; justify-content: center; margin-top: 150px; }
 .mainWord .subtitle { width: 100px; margin-right: 10px;}
 .mainIcons { text-align: center; display: flex; flex-wrap: wrap; width: 80%; max-width: 800px; justify-content: space-between; margin: 0 auto; }
@@ -59,22 +60,34 @@ body { margin: 0; font-family: NanumGothic;}
 .boardWrap .titleWrap { width: 100%; margin: 0 auto; max-width: 600px; text-align: center; ;padding-top: 30px; }
 .boardWrap .titleWrap p:nth-child(1) { font-size: 45px; margin-bottom: 30px;}
 .boardWrap .titleWrap p:nth-child(2) { font-size: 20px; line-height: 30px;}
+.boardWrap .contents .empty { width: 100%; text-align: center; margin: 200px auto; color: #a2a2a2; line-height: 30px;}
+.boardWrap .contents .content { margin: 0 15px 50px 15px; width: 30%; cursor: pointer; overflow: hidden;}
 
-.boardWrap .contents { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; width: 80%; max-width: 1700px; margin: 60px auto 0 auto; }
-.contents .content { margin: 0 15px 50px 15px; width: 30%; cursor: pointer; overflow: hidden;}
-.boardWrap .contents img,.boardWrap .contents span { display: block;}
-.boardWrap .contents img { width: 100%; margin-bottom: 30px;}
-.content .sub { font-size: 18px; color: #ffca4f; margin-bottom: 10px;}
-.content .main { font-size: 25px;}
-.contents .empty { width: 100%; text-align: center; margin: 200px auto; color: #a2a2a2; line-height: 30px;}
+/* TYPE1 */
+.boardWrap.type1 .contents { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; width: 80%; max-width: 1700px; margin: 60px auto 0 auto; }
+.boardWrap.type1 .contents img,.boardWrap.type1 .contents span { display: block;}
+.boardWrap.type1 .contents img { width: 100%; margin-bottom: 30px;}
+.boardWrap.type1 .contents .content .sub { font-size: 18px; color: #ffca4f; margin-bottom: 10px;}
+.boardWrap.type1 .contents .content .main { font-size: 25px;}
 
+/* TYPE2 */
+.boardWrap.type2 .contents { display: block; width: 100%; max-width: 1700px; margin: 60px auto 0 auto; }
+.boardWrap.type2 .contents .content { margin: 0 auto 50px auto; width: 100%; max-width: 1000px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;}
+.boardWrap.type2 .contents .content .imgWrap{ width: 40%; width: 300px; height: 200px; overflow: hidden; margin-right: 50px;}
+.boardWrap.type2 .contents .content .wordWrap{ width: 60%;}
+.boardWrap.type2 .contents .content .sub { font-size: 18px; color: #ffca4f; margin-bottom: 10px; display: block;}
+.boardWrap.type2 .contents .content .main { font-size: 25px; display: block;}
+.boardWrap.type2 .contents .content .preview { overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; word-wrap: break-word; line-height: 1.2em; height: 4.6em;}
 
 @media ( max-width: 1400px ) {
-    .contents .content { width: 45%;}
-    .boardWrap .contents { width: 90%; justify-content: space-between;}
+    .boardWrap.type1 .contents .content { width: 45%;}
+    .boardWrap.type1 .contents { width: 90%; justify-content: space-between;}
 }
 @media ( max-width: 950px ) {
-    .boardWrap .contents { width: 90%; }
+    .boardWrap.type1 .contents { width: 90%; }
+
+    .boardWrap.type2 .contents .content .imgWrap { margin-right: 30px !important;}
+    .boardWrap.type2 .contents .content .wordWrap { width: 40% !important;}
 }
 @media ( max-width: 640px ) {
     .for_pc { display: none !important; }
@@ -84,9 +97,10 @@ body { margin: 0; font-family: NanumGothic;}
     .menuWrap .active{ display: block !important; }
 
     #header { height: 66px !important;}
-    #main{ margin-top: 66px !important; }
+    #main{ margin-top: 66px !important; margin-bottom: 100px;}
 
     .backgroundTop { border-bottom: 100px solid transparent; border-left: 100px solid #ffca4f;}
+    .backgroundBottom { border-right: 800px solid #eee}
     .mainWord .subtitle { width: 100% !important;}
 
     .mainWord { display: block !important; text-align: center !important; margin-top: 200px !important; height: 160px !important; }
@@ -94,21 +108,31 @@ body { margin: 0; font-family: NanumGothic;}
     .mainIcons { justify-content: space-evenly !important;}
     .emphasis { color: #ffca4f !important;}
 
-    .boardWrap .titleWrap { max-width: 400px; padding-top: 20px;}
+    .boardWrap .titleWrap { max-width: 400px; padding-top: 20px; width: 90%;}
     .boardWrap .titleWrap p:nth-child(1) { font-size: 30px; margin-bottom: 20px;}
     .boardWrap .titleWrap p:nth-child(2) { font-size: 15px;}
+    .boardWrap .contents .empty { margin: 120px auto;}
 
-    .contents .content { width: 100%; margin-bottom: 30px;}
-    .boardWrap .contents { margin: 30px auto 0 auto;}
-    .boardWrap .contents img { width: 100%; margin-bottom: 20px;}
-    .content .sub { font-size: 15px; margin-bottom: 7px;}
-    .content .main { font-size: 20px;}
-    .contents .empty { margin: 120px auto;}
+    .boardWrap.type1 .contents .content { width: 100%; margin-bottom: 30px;}
+    .boardWrap.type1 .contents { margin: 30px auto 0 auto;}
+    .boardWrap.type1 .contents img { width: 100%; margin-bottom: 20px;}
+    .boardWrap.type1 .contents .content .sub { font-size: 15px; margin-bottom: 7px;}
+    .boardWrap.type1 .contents .content .main { font-size: 20px;}
+
     .mainWord .subtitle { margin-right: 0px;}
+
+    .boardWrap.type2 .contents { margin-top: 30px !important;}
+    .boardWrap.type2 .contents .content { margin-bottom: 30px;}
+    .boardWrap.type2 .contents .content .imgWrap { width: 150px !important; height: 100px !important; margin-right: 15px !important;}
+    .boardWrap.type2 .contents .content .imgWrap img{ transform: translate(-50%, -50%); position: relative; left: 50%; top: 50%;}
+    .boardWrap.type2 .contents .content .sub { font-size: 15px; margin-bottom: 7px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; word-wrap: break-word; line-height: 1.2em; height: 1.1em;}
+    .boardWrap.type2 .contents .content .main { font-size: 20px; margin-bottom: 10px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; word-wrap: break-word; line-height: 1.2em; height: 1.1em;}
+    .boardWrap.type2 .contents .content .preview { font-size: 13px; -webkit-line-clamp: 2; height: 2.2em;}
+
 }
 @media ( max-width: 375px ) {
     .backgroundTop { border-bottom: 100px solid transparent; border-left: 100px solid #ffca4f;}
-    .backgroundBottom { border-right: 400px solid #323232; border-top: 400px solid transparent;}
+    .backgroundBottom { border-right: 400px solid #eee; border-top: 400px solid transparent;}
 
     .mainWord { margin-top: 150px !important; height: 150px !important;}
     .mainWord .subtitle { font-size: 18px;}
@@ -118,11 +142,19 @@ body { margin: 0; font-family: NanumGothic;}
     .boardWrap .titleWrap { max-width: 350px; padding-top: 15px;}
     .boardWrap .titleWrap p:nth-child(1) { font-size: 25px;}
     .boardWrap .titleWrap p:nth-child(2) { font-size: 13px; line-height: 20px;}
+    .boardWrap .contents .empty { margin: 80px auto;}
 
-    .content .sub { font-size: 13px;}
-    .content .main { font-size: 17px;}
-    .contents .empty { margin: 80px auto;}
+    .boardWrap.type1 .contents .content .sub { font-size: 13px;}
+    .boardWrap.type1 .contents .content .main { font-size: 17px;}
+
+    .boardWrap.type2 .contents .content .sub { font-size: 13px;}
+    .boardWrap.type2 .contents .content .main { font-size: 17px;}
+    .boardWrap.type2 .contents .content .preview { font-size: 12px; height: 2.2em;}
+
 }
 @media ( max-width: 360px ) {
+    .titleWrap { width: 80%;}
     .mainWord { margin-top: 120px !important; height: 110px !important;}
+    .boardWrap.type2 .contents .content .imgWrap { width: 110px !important; height: 70px !important; }
+    #footerWrap { font-size: 13px;}
 }

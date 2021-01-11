@@ -5,7 +5,7 @@
 
 
 </style>
-<div class="boardWrap">
+<div class="boardWrap type1">
 
     <div class="titleWrap">
         <p>사랑의 이것은 모래뿐인</p>

@@ -5,7 +5,7 @@
 
 
 </style>
-<div class="boardWrap">
+<div class="boardWrap type1">
 
     <div class="titleWrap">
         <p>별들을 별 밤을 봅니다</p>
@@ -31,13 +31,13 @@
             <span class="main">찾아다녀도, 사는가, 되려니와</span>
         </div>
         <div class="content">
-            <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb4.jpg">
+            <img class="noImg" src="${path}/resources/images/no_Image.png">
             <span class="sub">품에 얼마나</span>
             <span class="main">커다란 새가 곧 청춘은 꽃이 사막이다</span>
         </div>
 
         <div class="content">
-            <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb.jpg">
+            <img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb4.jpg">
             <span class="sub">열매를 관현악이며</span>
             <span class="main">청춘의 들어 할지니</span>
         </div>
