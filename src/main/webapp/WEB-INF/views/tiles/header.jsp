@@ -13,6 +13,7 @@
             <a href="/etc.do"><li>ETC</li></a>
 
             <a href="#" style="position: absolute; right: 0;" class="loginBtn"><li>LOGIN</li></a>
+            <a href="#" style="position: absolute; right: 0; display: none;"><li>LOGOUT</li></a>
         </div>
     </div>
 
@@ -22,6 +23,7 @@
             <a href="/"><li class="active">MY LOGUE</li></a>
 
             <a href="#" class="loginBtn loginBtnImg"><img src="${path}/resources/images/loginIcon.png"></a>
+            <a href="#" class="loginBtnImg" style="right: 3%; display: none;"><img src="${path}/resources/images/logoutIcon.png" style="width: 35px;"></a>
         </div>
     </div>
 </div>
