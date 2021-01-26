@@ -11,16 +11,19 @@
             <a href="/travel.do"><li>TRAVEL</li></a>
             <a href="/daily.do"><li>DAILY</li></a>
             <a href="/etc.do"><li>ETC</li></a>
+
+            <a href="#" style="position: absolute; right: 0;" class="loginBtn"><li>LOGIN</li></a>
         </div>
     </div>
 
     <div class="for_m">
         <div class="menuWrap">
             <img class="menu_icon" src="${path}/resources/images/menu_icon.png">
-            <a href="#"><li class="active">MY LOGUE</li></a>
+            <a href="/"><li class="active">MY LOGUE</li></a>
+
+            <a href="#" class="loginBtn loginBtnImg"><img src="${path}/resources/images/loginIcon.png"></a>
         </div>
     </div>
-
 </div>
 
 <script type="text/javascript">
@@ -33,6 +36,11 @@
     $('.menu_icon').click(function(){
         $('#leftWrap').animate({"left": '+=350px'});
         $('#leftCloseBtn').animate({"left": '+=620px'});
+        $('.darken').show();
+    });
+
+    $('.loginBtn').click(function(){
+        $('.loginPopWrap').show();
         $('.darken').show();
     });
 

@@ -16,6 +16,7 @@
 </head>
 <body>
 <div style="width:100%; height:100%;">
+    <div class="darken"></div>
     <div class="backgroundTop"></div>
 
     <div id="header"><tiles:insertAttribute name="header" /></div>
@@ -26,9 +27,32 @@
     <div class="backgroundBottom"></div>
 </div>
 
+<div class="loginPopWrap">
+
+    <div id="loginCloseBtn"><img src="${path}/resources/images/X_icon_black.png"></div>
+
+    <span>LOGIN</span>
+    <div class="loginWrap">
+        <div class="login">
+            <input type="text" id="usrId" name="usrId">
+            <input type="password" id="usrPwd" name="usrPwd">
+        </div>
+        <div class="login">
+            <input type="button" class="loginPopBtn" value="ENTER">
+        </div>
+    </div>
+    <div class="loginBtnWrap">
+        <a href="/find.do"><input type="button" value="아이디 | 비밀번호 찾기"></a>
+        <a href="/join.do"><input type="button" value="회원가입"></a>
+    </div>
+</div>
+
 <script type="text/javascript">
     $(function() {
-
+        $('#loginCloseBtn').click(function () {
+            $('.loginPopWrap').hide();
+            $('.darken').hide();
+        });
     });
 </script>
 </body>

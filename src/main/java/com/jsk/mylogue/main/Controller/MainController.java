@@ -30,12 +30,24 @@ public class MainController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
-		
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "main/index.page";
 	}
 
+	@RequestMapping("join.do")
+	public String join() {
+		return "main/join.page";
+	}
+
+	@RequestMapping("setting.do")
+	public String setting() { return "main/setting.page"; }
+
+	@RequestMapping("modify/pwd.do")
+	public String modifyPwd() { return "main/modifyPwd.page"; }
+
+	@RequestMapping("find.do")
+	public String find() { return "main/find.page"; }
 
 	@RequestMapping("main.do")
 	public String main() {

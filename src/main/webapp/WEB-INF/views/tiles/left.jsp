@@ -14,7 +14,6 @@
 
     <div style="position: absolute; bottom: 0; width: 100%; height: 40px; background-color: #323232;"></div>
 </div>
-<div class="darken"></div>
 <div id="leftCloseBtn"><img src="${path}/resources/images/X_icon_white.png"></div>
 
 <script type="text/javascript">

@@ -12,6 +12,9 @@ body { margin: 0; font-family: NanumGothic;}
 .for_pc { display: block; }
 .for_m { display: none; }
 
+input { border: none; padding: 10px 15px;}
+select { padding: 7px; border: none; background: none; border-bottom: 2px solid #323232;}
+
 .scale {
     transform: scale(1);
     -webkit-transform: scale(1);
@@ -31,6 +34,19 @@ body { margin: 0; font-family: NanumGothic;}
 .margin0 { margin: 0 !important;}
 .padding0 { padding: 0 !important;}
 
+/* LOGIN */
+.loginPopWrap { width: 80%; max-width: 400px; height: 300px; display: block; margin: 0 auto; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); background: #ffca4f; display: none; z-index: 99; border-radius: 25px; }
+.loginPopWrap span { display: block; text-align: center; margin: 50px auto 20px auto; font-size: 25px; color: #323232}
+#loginCloseBtn { position: absolute; right: 4%; top: 4%; width: 45px; cursor: pointer; }
+#loginCloseBtn img{ width: 45px; }
+.loginWrap { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; margin-bottom: 20px;}
+.loginWrap .login:nth-child(1) { margin-right: 13px;}
+.login:nth-child(1) input{ display: block; margin: 7px 0; height: 28px; border: none;}
+.loginPopBtn { padding: 28px 20px; border: none; background: #323232; color: #fff; cursor: pointer; border-radius: 5px;}
+.loginBtnWrap { display: block; width: 100%; margin: 0 auto; text-align: center;}
+.loginBtnWrap input { border: none; padding: 10px 15px; color: #fff; background: #323232; cursor: pointer; border-radius: 5px;}
+
+
 /* HEADER */
 #header { width: 100%; margin: 0 auto; text-align: center; background: #ffca4f; position: fixed; top: 0; display: flex; align-items: center; justify-content: center; height: 80px; z-index: 99;}
 .menu_icon { position: absolute; left: 12px; width: 40px; top: 14px; }
@@ -38,6 +54,9 @@ body { margin: 0; font-family: NanumGothic;}
 .menuWrap li{ font-size: 1.2em; padding: 20px; list-style:none; color: #000; }
 .menuWrap li:hover { font-weight: bold;}
 .menuWrap a{ text-decoration: none; }
+
+.loginBtnImg { position: absolute; right: 5%; top: 24%;}
+.loginBtnImg img { width: 30px; }
 
 /* LEFT */
 #leftCloseBtn { width: 50px; height: 50px; background: #323232; position: fixed; left: -350px; top: 0; z-index: 999; }
@@ -48,7 +67,7 @@ body { margin: 0; font-family: NanumGothic;}
 #leftWrap .title { text-align: center; font-size: 2em; display: block; margin: 10px 0px 10px 0px; }
 
 /* MAIN */
-#main{ width: 100%; margin-top: 80px; margin-bottom: 200px; }
+#main{ width: 100%; margin-top: 80px; margin-bottom: 160px; }
 .mainWord { height: 500px; display: flex; align-items: center; justify-content: center; margin-top: 150px; }
 .mainWord .subtitle { width: 100px; margin-right: 10px;}
 .mainIcons { text-align: center; display: flex; flex-wrap: wrap; width: 80%; max-width: 800px; justify-content: space-between; margin: 0 auto; }
@@ -72,7 +91,7 @@ body { margin: 0; font-family: NanumGothic;}
 .boardWrap.type1 .contents .content .imgWrap { height: 280px; margin-bottom: 30px; overflow: hidden;}
 .boardWrap.type1 .contents .content .imgWrap img { transform: translate(-50%, -50%); position: relative; left: 50%; top: 50%;}
 .boardWrap.type1 .contents img { width: 100%; margin-bottom: 30px; }
-.boardWrap.type1 .contents .content .sub { font-size: 18px; color: #ffca4f; margin-bottom: 10px;}
+.boardWrap.type1 .contents .content .sub { font-size: 18px; color: #aaa; margin-bottom: 10px;}
 .boardWrap.type1 .contents .content .main { font-size: 25px;}
 
 /* TYPE2 */
@@ -86,6 +105,7 @@ body { margin: 0; font-family: NanumGothic;}
 .boardWrap.type2 .contents .content .preview { overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; word-wrap: break-word; line-height: 1.2em; height: 4.6em;}
 
 /* TYPE3 */
+.boardWrap.type3 .content_tb, .boardWrap.type3 .content_tbl { margin-top: 60px;}
 .boardWrap.type3 .content_tb, .boardWrap.type3 .content_tbl table { width: 80%; max-width: 900px;}
 .boardWrap.type3 .content_tbl table { margin: 30px auto; border: 1px solid #444444; border-collapse: collapse;}
 .boardWrap.type3 .content_tbl tr th, .boardWrap.type3 .content_tbl tr td { font-size: 18px;  border: 1px solid #444444; padding: 10px; text-align: center}
@@ -101,9 +121,50 @@ body { margin: 0; font-family: NanumGothic;}
 .boardWrap.type3 .content_tbl .tbl_paging a { margin: 0 5px; }
 .boardWrap.type3 .content_tbl .tbl_paging a li { list-style: none; cursor: pointer; padding: 3px 5px;}
 .boardWrap.type3 .content_tbl .tbl_paging a li.active{ font-weight: bold; }
+
+/* JOIN */
+.joinWrap { display: block; width: 85%; max-width: 450px; text-align: center; margin: 60px auto 0 auto;}
+.joinContentsWrap .joinContent { display: flex; flex-wrap: wrap; justify-content: start; align-content: center; margin: 30px auto;}
+.joinContentsWrap .joinContent label { width: 120px; display: flex; align-items: center; justify-content: center; width: 20%;}
+.joinContentsWrap .joinContent input { background: none; border-bottom: 2px solid #323232; margin: 0 15px; width: 60%;}
+.joinContentsWrap .joinContent textarea { margin: 0 15px; width: 65%; height: 70px;}
+.joinContentsWrap .joinContent #userId, .joinContentsWrap .joinContent #email1 { width: 40%; margin-right: 0; padding-right: 0; }
+#dupliChk { border: none; background: #323232; color: #fff; cursor: pointer;}
+
+.joinBtnWrap { margin-top: 50px;}
+.joinBtnWrap input { background: #323232; color: #fff; padding: 15px 20px; display: block; margin: 0 auto; width: 50%; max-width: 300px; cursor: pointer;}
+
+.modifyBtnWrap { margin-top: 50px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; align-content: center;}
+.modifyBtnWrap a{ margin: 0 10px;}
+.modifyBtnWrap input { background: #323232; color: #fff; padding: 15px 20px; display: block; margin: 0 auto; width: 100%; max-width: 300px; cursor: pointer; min-width: 100px;}
+
+#pwdModifyBtn { display: block; width: 70%; margin-left: 15px; cursor: pointer;}
+#pwdModifyBtn input{ background: #323232; color: #fff; padding: 15px 20px; display: block; margin: 0 auto; width: 100%; max-width: 300px; cursor: pointer;}
+
+/* FIND */
+.findWrap { display: block; margin: 50px auto 30px auto; width: 80%; max-width: 800px;}
+.findWrap .findContentsWrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-content: center; align-items: center;}
+.findWrap .findContentsWrap .findContent { width: 40%; max-width: 280px; padding: 40px; border: 2px solid #323232; background: #fff; opacity: 80%; }
+.findWrap .findContentsWrap .findContent:nth-child(1) { border: 2px solid #ffca4f;}
+.findWrap .findContentsWrap .findContent .find{ margin: 30px auto; display: flex; flex-wrap: wrap; justify-content: start; align-items: center;}
+.findWrap .findContentsWrap .findContent .find input{ background: none; border-bottom: 2px solid #323232; width: 60%;}
+.findWrap .findContentsWrap .findContent .find label { width: 120px; display: flex; align-items: center; justify-content: center; width: 25%;}
+.findWrap .findContentsWrap .findContent .find #email1 { width: 20%}
+.findWrap .findContentsWrap .findContent .find #question { width: 70%;}
+
+.findBtnWrap { margin-top: 50px;}
+.findBtnWrap input{ background: #323232; color: #fff; padding: 15px 20px; display: block; margin: 0 auto; width: 50%; max-width: 300px; cursor: pointer;}
+
+/* SETTING */
+#settingCate { display: block; width: 80%; max-width: 100px; margin: 0 auto; text-align: center;}
+
 @media ( max-width: 1400px ) {
     .boardWrap.type1 .contents .content { width: 45%;}
     .boardWrap.type1 .contents { width: 90%; justify-content: space-between;}
+
+    .backgroundBottom { border-right: 800px solid #eee;}
+
+    .findWrap .findContentsWrap .findContent { padding: 30px;}
 }
 @media ( max-width: 950px ) {
     .boardWrap.type1 .contents { width: 90%; }
@@ -112,6 +173,9 @@ body { margin: 0; font-family: NanumGothic;}
     .boardWrap.type2 .contents .content .wordWrap { width: 40% !important;}
 
     .boardWrap.type3 .content_tbl tr th, .boardWrap.type3 .content_tbl tr td { font-size: 15px; }
+
+    .findWrap .findContentsWrap { justify-content: center;}
+    .findWrap .findContentsWrap .findContent { width: 100%; margin-bottom: 50px;}
 }
 @media ( max-width: 640px ) {
     .for_pc { display: none !important; }
@@ -124,7 +188,6 @@ body { margin: 0; font-family: NanumGothic;}
     #main{ margin-top: 66px !important; margin-bottom: 100px;}
 
     .backgroundTop { border-bottom: 100px solid transparent; border-left: 100px solid #ffca4f;}
-    .backgroundBottom { border-right: 800px solid #eee}
     .mainWord .subtitle { width: 100% !important;}
 
     .mainWord { display: block !important; text-align: center !important; margin-top: 200px !important; height: 160px !important; }
@@ -153,11 +216,19 @@ body { margin: 0; font-family: NanumGothic;}
     .boardWrap.type2 .contents .content .main { font-size: 20px; margin-bottom: 10px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; word-wrap: break-word; line-height: 1.2em; height: 1.1em;}
     .boardWrap.type2 .contents .content .preview { font-size: 13px; -webkit-line-clamp: 2; height: 2.2em;}
 
+    .boardWrap.type3 .content_tb, .boardWrap.type3 .content_tbl { margin-top: 30px;}
     .boardWrap.type3 .content_tbl tr th, .boardWrap.type3 .content_tbl tr td { font-size: 12px; }
     .boardWrap.type3 .content_tbl thead tr th:nth-child(3), .boardWrap.type3 .content_tbl tbody tr td:nth-child(3) { display: none;}
     .boardWrap.type3 .content_tbl thead tr th:nth-child(4) { width: 17%;}
     .boardWrap.type3 .content_tbl .tbl_paging { font-size: 15px; }
     .boardWrap.type3 .content_tbl .tbl_paging a:first-child, .boardWrap.type3 .content_tbl .tbl_paging a:last-child { display: none;}
+
+    .joinWrap { margin: 30px auto 0 auto;}
+    .joinContentsWrap .joinContent #userId, .joinContentsWrap .joinContent #email1 { width: 30%;}
+
+    .findWrap { margin: 30px auto;}
+    .findWrap .findContentsWrap .findContent { margin-bottom: 30px;}
+    .findBtnWrap { margin-top: 40px;}
 }
 @media ( max-width: 375px ) {
     .backgroundTop { border-bottom: 100px solid transparent; border-left: 100px solid #ffca4f;}
@@ -182,6 +253,8 @@ body { margin: 0; font-family: NanumGothic;}
 
     .boardWrap.type3 .content_tbl tr th, .boardWrap.type3 .content_tbl tr td { padding: 7px;}
 
+    .findWrap .findContentsWrap .findContent .find #email2 { width: 33%}
+    .findBtnWrap { margin-top: 30px;}
 }
 @media ( max-width: 360px ) {
     .titleWrap { width: 80%;}
@@ -194,4 +267,34 @@ body { margin: 0; font-family: NanumGothic;}
     .boardWrap.type3 .content_tbl tr th, .boardWrap.type3 .content_tbl tr td { padding: 5px;}
     .boardWrap.type3 .content_tbl thead tr th:nth-child(4) { width: 20%;}
     .boardWrap.type3 .content_tbl .tbl_paging { font-size: 13px; }
+
+    .joinContentsWrap .joinContent label { font-size: 12px;}
+    .joinContentsWrap .joinContent input { width: 55%;}
+    .joinContentsWrap .joinContent textarea { width: 55%;}
+
+}
+@media ( max-width: 320px ) {
+    .loginWrap .login:nth-child(1) { margin: 0;}
+    .loginPopBtn { margin: 20px; padding: 15px 72px;}
+    .loginBtnWrap input { margin-bottom: 10px;}
+
+    .joinWrap { width: 90%;}
+    .joinContentsWrap .joinContent label { width: 100%; margin-bottom: 15px;}
+    .joinContentsWrap .joinContent input { width: 70%; text-align: center;}
+    .joinContentsWrap .joinContent textarea { width: 70%;}
+    .joinContentsWrap .joinContent { justify-content: center;}
+    .joinContentsWrap .joinContent #userId, .joinContentsWrap .joinContent #email1 { width: 35%;}
+
+    .findWrap { width: 90%;}
+    .findWrap .findContentsWrap .findContent { padding: 25px;}
+    .findWrap .findContentsWrap .findContent .find { margin : 20px auto;}
+    .findWrap .findContentsWrap .findContent .find #email1 { width: 35%;}
+    .findWrap .findContentsWrap .findContent .find label, .findWrap .findContentsWrap .findContent .find input{ width: 100%; text-align: center;}
+    .findWrap .findContentsWrap .findContent .find #question { width: 100%}
+    .findWrap .findContentsWrap .findContent .find #email2 { width: 40%}
+    .findBtnWrap { margin-top: 25px;}
+    .findBtnWrap input { width: 100%; }
+
+    #pwdModifyBtn { margin: 0;}
+
 }
