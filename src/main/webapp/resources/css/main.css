@@ -73,6 +73,7 @@ select { padding: 7px; border: none; background: none; border-bottom: 2px solid 
 .iconWrap { position: absolute; bottom: 85px;}
 .iconWrap img { margin-top: 20px;}
 .iconWrap span { font-weight: bold; color: #ffca4f;}
+.iconWrap a { text-decoration: none;}
 
 /* MAIN */
 #main{ width: 100%; margin-top: 80px; margin-bottom: 160px; }
