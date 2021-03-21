@@ -61,10 +61,16 @@ select { padding: 7px; border: none; background: none; border-bottom: 2px solid 
 /* LEFT */
 #leftCloseBtn { width: 50px; height: 50px; background: #323232; position: fixed; left: -350px; top: 0; z-index: 999; }
 #leftCloseBtn img { padding: 5px; width: 40px; }
-#leftWrap { width: 270px; height: 100%; position: fixed; top: 0; background: #ffca4f; z-index: 999; left: -350px; }
+#leftWrap { width: 250px; height: 100%; position: fixed; top: 0; background: #ffca4f; z-index: 999; left: -350px; }
 #leftWrap a { text-decoration: none; }
-#leftWrap a li { list-style: none;font-size: 25px; color: #000; list-style: none; text-align: center; padding: 10px; text-decoration: underline; text-underline-position: under; text-decoration-color: #4a4a4a;}
-#leftWrap .title { text-align: center; font-size: 2em; display: block; margin: 10px 0px 10px 0px; }
+#leftWrap a li { list-style: none;font-size: 18px; color: #000; list-style: none; padding: 10px 0;}
+#leftWrap .title { text-align: center; font-size: 1.6em; display: block; margin: 20px 0px 5px 0px; }
+#leftWrap span { display: block; text-align: center; margin-bottom: 10px;}
+#leftWrap .menus { text-align: left; margin: 40px 30px; max-height: 72vh; overflow-y: scroll;}
+#leftWrap .menus .leftTitle { text-align: left; font-size: 20px; font-weight: bold;}
+#leftWrap .menus::-webkit-scrollbar {
+    width: 0px;
+}
 
 /* FLOAT */
 #floatWrap { position: fixed; bottom: 7%; right: 2%; }
@@ -247,7 +253,7 @@ select { padding: 7px; border: none; background: none; border-bottom: 2px solid 
     .mainWord { margin-top: 150px !important; height: 150px !important;}
     .mainWord .subtitle { font-size: 18px;}
     .mainWord .title { font-size: 20px;}
-    .title { color: #ffca4f !important;}
+    .mainWord .title { color: #ffca4f !important;}
 
     .boardWrap .titleWrap { max-width: 350px; padding-top: 15px;}
     .boardWrap .titleWrap p:nth-child(1) { font-size: 25px;}

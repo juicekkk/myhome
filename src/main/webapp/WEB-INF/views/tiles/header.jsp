@@ -30,14 +30,13 @@
 
 <script type="text/javascript">
     $('.for_m .menuWrap li').click(function(){
-        console.log('click');
         $('.for_m .menuWrap li').css('display', 'none');
         $(this).show();
     });
 
     $('.menu_icon').click(function(){
         $('#leftWrap').animate({"left": '+=350px'});
-        $('#leftCloseBtn').animate({"left": '+=620px'});
+        $('#leftCloseBtn').animate({"left": '+=600px'});
         $('.darken').show();
     });
 
