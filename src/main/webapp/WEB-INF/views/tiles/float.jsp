@@ -5,26 +5,28 @@
 
 </style>
 <div id="floatWrap">
-
     <div class="plusWrap">
         <img src="${path}/resources/images/plusIcon.png">
     </div>
 
     <div class="iconWrap">
         <div>
-            <a href="/mypage.do"><img src="${path}/resources/images/mypageIcon.png"></a>
-            <span>MYPAGE</span>
+            <a href="/mypage.do">
+                <img src="${path}/resources/images/mypageIcon.png">
+                <span>MYPAGE</span>
+            </a>
         </div>
         <div>
-            <a href="/setting.do"><img src="${path}/resources/images/settingIcon.png"></a>
-            <span>SETTING</span>
+            <a href="/setting.do">
+                <img src="${path}/resources/images/settingIcon.png">
+                <span>SETTING</span>
+            </a>
         </div>
     </div>
-
 </div>
+
 <script type="text/javascript">
     $(".plusWrap").click(function(){
         $(".iconWrap").toggle();
     });
-
 </script>
