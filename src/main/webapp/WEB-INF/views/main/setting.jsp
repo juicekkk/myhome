@@ -22,7 +22,7 @@
                     <option value="2">HOBBY</option>
                     <option value="3">TRAVEL</option>
                     <option value="4">DAILY</option>
-                    <option value="5">ETC</option>
+                    <option value="5">STRANGER</option>
                 </select>
             </div>
 

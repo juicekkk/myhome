@@ -40,6 +40,11 @@ public class MainController {
 		return "main/join.page";
 	}
 
+	@RequestMapping("mypage.do")
+	public String myPage() {
+		return "main/mypage.page";
+	}
+
 	@RequestMapping("setting.do")
 	public String setting() { return "main/setting.page"; }
 
@@ -74,9 +79,9 @@ public class MainController {
 		return "logue/daily.page";
 	}
 
-	@RequestMapping("etc.do")
-	public String etcLogue() {
-		return "logue/etc.page";
+	@RequestMapping("stranger.do")
+	public String strangerLogue() {
+		return "logue/stranger.page";
 	}
 
 }

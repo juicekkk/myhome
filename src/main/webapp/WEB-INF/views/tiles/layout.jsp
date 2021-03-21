@@ -21,6 +21,7 @@
 
     <div id="header"><tiles:insertAttribute name="header" /></div>
     <div id="left" class="for_m"><tiles:insertAttribute name="left" /></div>
+    <div id="float" class="for_pc"><tiles:insertAttribute name="float" /></div>
     <div id="main"><tiles:insertAttribute name="body" /></div>
     <div id="footer"><tiles:insertAttribute name="footer" /></div>
 

@@ -10,7 +10,7 @@
             <a href="/hobby.do"><li>HOBBY</li></a>
             <a href="/travel.do"><li>TRAVEL</li></a>
             <a href="/daily.do"><li>DAILY</li></a>
-            <a href="/etc.do"><li>ETC</li></a>
+            <a href="/stranger.do"><li>ETC</li></a>
 
             <a href="#" style="position: absolute; right: 0;" class="loginBtn"><li>LOGIN</li></a>
             <a href="#" style="position: absolute; right: 0; display: none;"><li>LOGOUT</li></a>

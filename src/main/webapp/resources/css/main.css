@@ -66,6 +66,14 @@ select { padding: 7px; border: none; background: none; border-bottom: 2px solid 
 #leftWrap a li { list-style: none;font-size: 25px; color: #000; list-style: none; text-align: center; padding: 10px; text-decoration: underline; text-underline-position: under; text-decoration-color: #4a4a4a;}
 #leftWrap .title { text-align: center; font-size: 2em; display: block; margin: 10px 0px 10px 0px; }
 
+/* FLOAT */
+#floatWrap { position: fixed; bottom: 7%; right: 2%; }
+.iconWrap { display: none;}
+.plusWrap { cursor: pointer;}
+.iconWrap { position: absolute; bottom: 85px;}
+.iconWrap img { margin-top: 20px;}
+.iconWrap span { font-weight: bold; color: #ffca4f;}
+
 /* MAIN */
 #main{ width: 100%; margin-top: 80px; margin-bottom: 160px; }
 .mainWord { height: 500px; display: flex; align-items: center; justify-content: center; margin-top: 150px; }
@@ -163,6 +171,7 @@ select { padding: 7px; border: none; background: none; border-bottom: 2px solid 
     .boardWrap.type1 .contents { width: 90%; justify-content: space-between;}
 
     .backgroundBottom { border-right: 800px solid #eee;}
+    .iconWrap span { color: #323232;}
 
     .findWrap .findContentsWrap .findContent { padding: 30px;}
 }

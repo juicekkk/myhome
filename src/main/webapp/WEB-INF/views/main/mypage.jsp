@@ -21,7 +21,7 @@
             </div>
             <div class="joinContent">
                 <label>비밀번호</label>
-                <input type="password" name="userPwd" class="userPwd" placeholder="PASSWORD">
+                <a href="/modify/pwd.do" id="pwdModifyBtn"><input type="button" value="비밀번호변경"></a>
             </div>
             <div class="joinContent">
                 <label>닉네임</label>
@@ -53,8 +53,9 @@
                 <input type="text" name="answer" id="answer">
             </div>
         </div>
-        <div class="joinBtnWrap">
-            <a><input type="button" value="회원가입"></a>
+        <div class="modifyBtnWrap">
+            <a><input type="button" value="회원탈퇴" style="background: #bf3a46;"></a>
+            <a><input type="button" value="변경"></a>
         </div>
     </div>
 
