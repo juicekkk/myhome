@@ -2,10 +2,14 @@ package com.jsk.mylogue.main.Controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
+import com.jsk.mylogue.main.vo.testVo;
+import com.jsk.mylogue.main.Service.MainService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +22,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+
+	@Autowired
+	private MainService mainService;
+
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -82,6 +90,17 @@ public class MainController {
 	@RequestMapping("stranger.do")
 	public String strangerLogue() {
 		return "logue/stranger.page";
+	}
+
+	@RequestMapping("test.do")
+	public String testLogue(Model model) {
+
+		//<> 안에 DTO or VO 이름
+		List<testVo> testpage = mainService.getList();
+		//model을 통해 View로 전달
+		model.addAttribute("testpage",testpage);
+
+		return "logue/test.page";
 	}
 
 }
