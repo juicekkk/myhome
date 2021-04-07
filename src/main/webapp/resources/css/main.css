@@ -35,7 +35,7 @@ select { padding: 7px; border: none; background: none; border-bottom: 2px solid 
 .padding0 { padding: 0 !important;}
 
 /* LOGIN */
-.loginPopWrap { width: 80%; max-width: 400px; height: 300px; display: block; margin: 0 auto; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); background: #ffca4f; display: none; z-index: 99; border-radius: 25px; }
+.loginPopWrap { width: 90%; max-width: 400px; height: 300px; display: block; margin: 0 auto; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); background: #ffca4f; display: none; z-index: 99; border-radius: 25px; }
 .loginPopWrap span { display: block; text-align: center; margin: 50px auto 20px auto; font-size: 25px; color: #323232}
 #loginCloseBtn { position: absolute; right: 4%; top: 4%; width: 45px; cursor: pointer; }
 #loginCloseBtn img{ width: 45px; }
