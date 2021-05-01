@@ -26,7 +26,6 @@ public class MainController {
 	@Autowired
 	private MainService mainService;
 
-	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */

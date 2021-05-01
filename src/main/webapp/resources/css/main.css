@@ -100,6 +100,11 @@ select { padding: 7px; border: none; background: none; border-bottom: 2px solid 
 .boardWrap .contents .empty { width: 100%; text-align: center; margin: 200px auto; color: #a2a2a2; line-height: 30px;}
 .boardWrap .contents .content { margin: 0 15px 50px 15px; width: 30%; cursor: pointer; overflow: hidden;}
 
+.boardWrap .boardBtnWrap { width: 100%; margin: 1700px; margin: 0 auto 20px auto; text-align: center;}
+.boardWrap .boardBtnWrap input.write{ background: #fff; border-radius: 5px; cursor: pointer; border: 1px solid #adadad}
+.boardWrap .boardBtnWrap input.searchText{  width: 300px;}
+.boardWrap .boardBtnWrap input.searchBtn{ background: #323232; color: #fff; border-radius: 5px; cursor: pointer;}
+
 /* TYPE1 */
 .boardWrap.type1 .contents { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; width: 80%; max-width: 1700px; margin: 60px auto 0 auto; }
 .boardWrap.type1 .contents img,.boardWrap.type1 .contents span { display: block;}
@@ -173,6 +178,13 @@ select { padding: 7px; border: none; background: none; border-bottom: 2px solid 
 /* SETTING */
 #settingCate { display: block; width: 80%; max-width: 100px; margin: 0 auto; text-align: center;}
 
+/* BOARD */
+.boardContent { margin: 0 auto; max-width: 700px; width: 90%; display: flex; flex-wrap: wrap; justify-content: start; margin-bottom: 15px;}
+.boardContent span { width: 20%; max-width: 200px; margin-top: 15px;}
+.boardContent input { width: 70%; max-width: 600px; border-bottom: 1px solid #323232;}
+.boardContent textarea{ width: 100%; max-width: 800px; height: 220px; margin-top: 15px;}
+
+
 @media ( max-width: 1400px ) {
     .boardWrap.type1 .contents .content { width: 45%;}
     .boardWrap.type1 .contents { width: 90%; justify-content: space-between;}
@@ -245,6 +257,15 @@ select { padding: 7px; border: none; background: none; border-bottom: 2px solid 
     .findWrap { margin: 30px auto;}
     .findWrap .findContentsWrap .findContent { margin-bottom: 30px;}
     .findBtnWrap { margin-top: 40px;}
+
+    .boardWrap .boardBtnWrap input.searchText{  width: 200px;}
+
+    .boardContent span { font-size: 14px; }
+}
+@media ( max-width: 414px ) {
+    .boardWrap .boardBtnWrap input.searchText{  width: 100px;}
+    .boardContent input { width: 65%;}
+    .boardContent .thumbnail { width: 60%;}
 }
 @media ( max-width: 375px ) {
     .backgroundTop { border-bottom: 100px solid transparent; border-left: 100px solid #ffca4f;}
@@ -271,6 +292,10 @@ select { padding: 7px; border: none; background: none; border-bottom: 2px solid 
 
     .findWrap .findContentsWrap .findContent .find #email2 { width: 33%}
     .findBtnWrap { margin-top: 30px;}
+
+    .boardWrap .boardBtnWrap select{ display: none;}
+
+    .boardContent span { font-size: 12px; }
 }
 @media ( max-width: 360px ) {
     .titleWrap { width: 80%;}

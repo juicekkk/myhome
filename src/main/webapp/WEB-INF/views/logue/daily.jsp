@@ -13,6 +13,18 @@
     </div>
 
     <div class="contents">
+
+        <div class="boardBtnWrap">
+            <select name="searchType">
+                <option value="1" selected="selected">제목</option>
+                <option value="2">제목+내용</option>
+                <option value="3">작성자</option>
+            </select>
+            <input type="text" class="searchText" placeholder="검색어를 입력해주세요." name="searchText">
+            <a><input type="button" value="검색" class="searchBtn"></a>
+            <a href="/write/daily.do"><input type="button" value="글쓰기" class="write"></a>
+        </div>
+
         <div class="content">
             <div class="imgWrap"><img class="scale" src="${path}/resources/images/contents/board1/thumb/thumb.jpg"></div>
             <div class="wordWrap">
@@ -49,6 +61,16 @@
             </div>
         </div>
 
+        <div class="boardBtnWrap">
+            <select name="searchType">
+                <option value="1" selected="selected">제목</option>
+                <option value="2">제목+내용</option>
+                <option value="3">작성자</option>
+            </select>
+            <input type="text" class="searchText" placeholder="검색어를 입력해주세요." name="searchText">
+            <a><input type="button" value="검색" class="searchBtn"></a>
+            <a href="/write/daily.do"><input type="button" value="글쓰기" class="write"></a>
+        </div>
 
     </div>
 
