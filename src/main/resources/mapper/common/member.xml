@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsk.mylogue.main.Dao.MemberDao">
+
+    <select id="dupliChk" resultType="Integer" parameterType="String">
+        SELECT COUNT(*) AS userId FROM TB_MEMBER WHERE id = #{userId}
+    </select>
+
+</mapper>

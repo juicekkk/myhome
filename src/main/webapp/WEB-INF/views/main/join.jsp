@@ -103,13 +103,19 @@
             $.ajax({
                 url:'/dupliChk.do', //request 보낼 서버의 경로
                 type:'post', // 메소드(get, post, put 등)
-                data:{'id':$('#userId').val()}, //보낼 데이터
+                data:{'userId':$('#userId').val()}, //보낼 데이터
+                dataType : 'json',
                 success: function(data) {
                     //서버로부터 정상적으로 응답이 왔을 때 실행
-                },
-                error: function(err) {
-                    //서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
-                }
+                    if(data.result == 0){
+                        $('input[name=idChk]').val('1');
+                        alert("사용 가능한 아이디입니다.");
+                    } else {
+                        alert("이미 등록된 아이디입니다.");
+                    }
+                }, error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);}
+
             });
 
         }

@@ -28,9 +28,6 @@ public class MainController {
 	@Autowired
 	private MainService mainService;
 
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -42,11 +39,6 @@ public class MainController {
 		model.addAttribute("serverTime", formattedDate );
 
 		return "main/index.page";
-	}
-
-	@RequestMapping("join.do")
-	public String join() {
-		return "main/join.page";
 	}
 
 	@RequestMapping("/{categoryCode}.do")
@@ -61,56 +53,14 @@ public class MainController {
 		return mnv;
 	}
 
-	@RequestMapping("mypage.do")
-	public String myPage() {
-		return "main/mypage.page";
-	}
-
-	@RequestMapping("setting.do")
-	public String setting() { return "main/setting.page"; }
-
-	@RequestMapping("modify/pwd.do")
-	public String modifyPwd() { return "main/modifyPwd.page"; }
-
-	@RequestMapping("find.do")
-	public String find() { return "main/find.page"; }
-
 	@RequestMapping("main.do")
 	public String main() {
 		return "main/index.page";
 	}
 
-	/*@RequestMapping("eat.do")
-	public String eatLogue() {
-		return "logue/eat.page";
-	}
-
-	@RequestMapping("hobby.do")
-	public String hobbyLogue() {
-		return "logue/hobby.page";
-	}
-
-	@RequestMapping("travel.do")
-	public String travelLogue() {
-		return "logue/travel.page";
-	}
-
-	@RequestMapping("daily.do")
-	public String dailyLogue() {
-		return "logue/daily.page";
-	}
-
-	@RequestMapping("stranger.do")
-	public String strangerLogue() {
-		return "logue/stranger.page";
-	}*/
-
 	@RequestMapping("test.do")
 	public String testLogue(Model model) {
-
-		//<> 안에 DTO or VO 이름
 		List<testVo> testpage = mainService.getList();
-		//model을 통해 View로 전달
 		model.addAttribute("testpage",testpage);
 
 		return "logue/test.page";
