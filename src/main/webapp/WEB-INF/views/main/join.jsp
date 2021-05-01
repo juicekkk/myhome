@@ -13,49 +13,106 @@
     </div>
 
     <div class="joinWrap">
-        <div class="joinContentsWrap">
-            <div class="joinContent">
-                <label>아이디</label>
-                <input type="text" name="userId" id="userId" placeholder="ID">
-                <a href="#"><input type="button" value="중복체크" id="dupliChk" style="width: 80px;"></a>
+        <form method="post" enctype="multipart/form-data" action="/memberReg.do">
+            <div class="joinContentsWrap">
+                <div class="joinContent">
+                    <label>아이디</label>
+                    <input type="hidden" name="idChk" value="0">
+                    <input type="text" name="userId" id="userId" placeholder="ID">
+                    <a href="#"><input type="button" value="중복체크" id="dupliChk" style="width: 80px;"></a>
+                </div>
+                <div class="joinContent">
+                    <label>비밀번호</label>
+                    <input type="password" name="userPwd" class="userPwd" placeholder="PASSWORD">
+                </div>
+                <div class="joinContent">
+                    <label>비밀번호 확인</label>
+                    <input type="password" class="userPwdChk" placeholder="PASSWORD CONFIRM">
+                </div>
+                <div class="joinContent">
+                    <label>닉네임</label>
+                    <input type="text" name="nickName" id="nickName">
+                </div>
+                <div class="joinContent">
+                    <label>이메일</label>
+                    <input type="text" name="email1" id="email1" placeholder="EMAIL">
+                    <span style="display: flex; flex-wrap: wrap; align-items: center;">@</span>
+                    <select name="email2" id="email2">
+                        <option value="">선택</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                    </select>
+                </div>
+                <div class="joinContent">
+                    <label>질문</label>
+                    <select name="question" style="margin: 0 15px;">
+                        <option value="">비밀번호찾기 시 사용</option>
+                        <option value="1">나의 보물 1호는 무엇인가요?</option>
+                        <option value="2">어머니 성함은 무엇인가요?</option>
+                        <option value="3">아버지 성함은 무엇인가요?</option>
+                        <option value="4">학창시절 별명은 무엇인가요?</option>
+                        <option value="5">나의 학교 이름은 무엇인가요?</option>
+                    </select>
+                </div>
+                <div class="joinContent">
+                    <label>답변</label>
+                    <input type="text" name="answer" id="answer">
+                </div>
             </div>
-            <div class="joinContent">
-                <label>비밀번호</label>
-                <input type="password" name="userPwd" class="userPwd" placeholder="PASSWORD">
+            <div class="joinBtnWrap">
+                <a><input type="submit" value="회원가입" id="mbrRegBtn"></a>
             </div>
-            <div class="joinContent">
-                <label>닉네임</label>
-                <input type="text" name="nickName" id="nickName">
-            </div>
-            <div class="joinContent">
-                <label>이메일</label>
-                <input type="text" name="email1" id="email1" placeholder="EMAIL">
-                <span style="display: flex; flex-wrap: wrap; align-items: center;">@</span>
-                <select name="email2" id="email2">
-                    <option value="">선택</option>
-                    <option value="naver.com">naver.com</option>
-                    <option value="gmail.com">gmail.com</option>
-                </select>
-            </div>
-            <div class="joinContent">
-                <label>질문</label>
-                <select name="question" style="margin: 0 15px;">
-                    <option value="">비밀번호찾기 시 사용</option>
-                    <option value="1">나의 보물 1호는 무엇인가요?</option>
-                    <option value="2">어머니 성함은 무엇인가요?</option>
-                    <option value="3">아버지 성함은 무엇인가요?</option>
-                    <option value="4">학창시절 별명은 무엇인가요?</option>
-                    <option value="5">나의 학교 이름은 무엇인가요?</option>
-                </select>
-            </div>
-            <div class="joinContent">
-                <label>답변</label>
-                <input type="text" name="answer" id="answer">
-            </div>
-        </div>
-        <div class="joinBtnWrap">
-            <a><input type="button" value="회원가입"></a>
-        </div>
+        </form>
     </div>
 
 </div>
+
+<script>
+    $('#mbrRegBtn').click(function() {
+       if($('#userId').val() == ''){
+           alert('아이디를 입력해주세요.');
+           return false;
+       }
+
+        if($('.userPwd').val() == ''){
+            alert('비밀번호를 입력해주세요.');
+            return false;
+        }
+
+        if($('.userPwd').val() != $('.userPwdChk').val()){
+            alert('비밀번호가 일치하지 않습니다.');
+            return false;
+        }
+
+        if($().val() == '0'){
+            alert('아이디 중복체크를 해주세요.');
+            return false;
+        }
+
+        return true;
+    });
+
+    $('#userId').keydown(function () {
+        $('input[name=idChk]').val('0');
+    });
+
+    $("#dupliChk").click(function () {
+        if($('#userId').val() == ''){
+            alert('아이디를 입력해주세요.');
+        } else {
+            $.ajax({
+                url:'/dupliChk.do', //request 보낼 서버의 경로
+                type:'post', // 메소드(get, post, put 등)
+                data:{'id':$('#userId').val()}, //보낼 데이터
+                success: function(data) {
+                    //서버로부터 정상적으로 응답이 왔을 때 실행
+                },
+                error: function(err) {
+                    //서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+                }
+            });
+
+        }
+    });
+
+</script>

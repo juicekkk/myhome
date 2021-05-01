@@ -12,15 +12,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class MainController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
 	@Autowired
@@ -32,19 +34,31 @@ public class MainController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
+
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
+
 		String formattedDate = dateFormat.format(date);
 		model.addAttribute("serverTime", formattedDate );
-		
+
 		return "main/index.page";
 	}
 
 	@RequestMapping("join.do")
 	public String join() {
 		return "main/join.page";
+	}
+
+	@RequestMapping("/{categoryCode}.do")
+	public ModelAndView logues(@PathVariable String categoryCode){
+		ModelAndView mnv = new ModelAndView();
+		if(categoryCode.equals("hobby") || categoryCode.equals("eat") || categoryCode.equals("travel") || categoryCode.equals("daily") || categoryCode.equals("stranger")) {
+			mnv.setViewName("logue/" + categoryCode + ".page");
+		} else {
+			mnv.setViewName("logue/dev.page");
+		}
+		mnv.addObject("categoryCode", categoryCode);
+		return mnv;
 	}
 
 	@RequestMapping("mypage.do")
@@ -66,7 +80,7 @@ public class MainController {
 		return "main/index.page";
 	}
 
-	@RequestMapping("eat.do")
+	/*@RequestMapping("eat.do")
 	public String eatLogue() {
 		return "logue/eat.page";
 	}
@@ -89,7 +103,7 @@ public class MainController {
 	@RequestMapping("stranger.do")
 	public String strangerLogue() {
 		return "logue/stranger.page";
-	}
+	}*/
 
 	@RequestMapping("test.do")
 	public String testLogue(Model model) {
