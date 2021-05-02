@@ -5,7 +5,23 @@
 <mapper namespace="com.jsk.mylogue.main.Dao.MemberDao">
 
     <select id="dupliChk" resultType="Integer" parameterType="String">
-        SELECT COUNT(*) AS userId FROM TB_MEMBER WHERE id = #{userId}
+        SELECT COUNT(*) AS userId FROM TB_MEMBER WHERE userId = #{userId}
     </select>
+
+    <insert id="memberReg" parameterType="com.jsk.mylogue.main.vo.memberVo">
+        INSERT INTO TB_MEMBER (
+               userId
+             , userPwd
+             , nickname
+             , email
+             , question
+             , answer )
+        VALUES ( #{userId}
+             , #{userPwd}
+             , #{nickName}
+             , CONCAT(#{email1},'@',#{email2})
+             , #{question}
+             , #{answer} )
+    </insert>
 
 </mapper>

@@ -1,6 +1,7 @@
 package com.jsk.mylogue.main.Controller;
 
 import com.jsk.mylogue.main.Service.MemberService;
+import com.jsk.mylogue.main.vo.memberVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,19 @@ public class MemberController {
 		Integer userChkVal = memberService.dupliChk(userId);
 		map.put("code", 200);
 		map.put("result", userChkVal);
+		return map;
+	}
+
+	@RequestMapping(value = "memberReg.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Object memberReg(memberVo param) throws Exception {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		String encryptPwd = EncryptionUtil.encrypt((String) param.getUserPwd());
+		param.setUserPwd(encryptPwd);
+
+		memberService.memberReg(param);
+		map.put("code", 200);
 		return map;
 	}
 
