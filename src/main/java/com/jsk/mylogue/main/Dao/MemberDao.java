@@ -17,4 +17,19 @@ public class MemberDao extends BaseDao {
         this.insert("memberReg", param);
     }
 
+    public void memberMod(memberVo param) {
+        this.update("memberMod", param);
+    }
+
+    public void memberPwdMod(memberVo param) {
+        this.update("memberPwdMod", param);
+    }
+
+    public void memberDel(memberVo param) {
+        this.update("memberDel", param);
+    }
+
+    public memberVo memberLoginInfo(memberVo param) {
+        return (memberVo) this.select("memberLoginInfo", param);
+    }
 }

@@ -5,7 +5,7 @@
 <mapper namespace="com.jsk.mylogue.main.Dao.MemberDao">
 
     <select id="dupliChk" resultType="Integer" parameterType="String">
-        SELECT COUNT(*) AS userId FROM TB_MEMBER WHERE userId = #{userId}
+        SELECT COUNT(*) AS userId FROM TB_MEMBER WHERE userId = #{userId} AND del = 'N'
     </select>
 
     <insert id="memberReg" parameterType="com.jsk.mylogue.main.vo.memberVo">
@@ -15,13 +15,62 @@
              , nickname
              , email
              , question
-             , answer )
+             , answer
+             , regDate )
         VALUES ( #{userId}
              , #{userPwd}
              , #{nickName}
              , CONCAT(#{email1},'@',#{email2})
              , #{question}
-             , #{answer} )
+             , #{answer}
+              , NOW() )
     </insert>
+
+    <update id="memberMod" parameterType="com.jsk.mylogue.main.vo.memberVo">
+        UPDATE TB_MEMBER
+           SET nickname = #{nickName}
+             , email = CONCAT(#{email1},'@',#{email2})
+             , question = #{question}
+             , answer = #{answer}
+             , modDate = NOW()
+         WHERE mbrNum = #{mbrNum}
+    </update>
+
+    <update id="memberPwdMod" parameterType="com.jsk.mylogue.main.vo.memberVo">
+        UPDATE TB_MEMBER
+           SET userPwd = #{newUserPwd}
+         WHERE mbrNum = #{mbrNum}
+    </update>
+
+    <update id="memberDel" parameterType="com.jsk.mylogue.main.vo.memberVo">
+        UPDATE TB_MEMBER
+           SET del = 'Y'
+             , modDate = NOW()
+         WHERE mbrNum = #{mbrNum}
+    </update>
+
+    <select id="memberLoginInfo" parameterType="com.jsk.mylogue.main.vo.memberVo" resultType="com.jsk.mylogue.main.vo.memberVo">
+        SELECT mbrNum
+             , userId
+             , userPwd
+             , nickName
+             , email
+             , SUBSTRING_INDEX(email,"@",1) AS email1
+             , SUBSTRING_INDEX(email,"@",-1) AS email2
+             , question
+             , answer
+             , auth
+          FROM TB_MEMBER
+         WHERE userId = #{userId}
+           AND del = 'N'
+    </select>
+
+    <select id="memberId" parameterType="com.jsk.mylogue.main.vo.memberVo" resultType="com.jsk.mylogue.main.vo.memberVo">
+        SELECT CONCAT(SUBSTRING(userID, 1, char_length(userID)-4), "****") AS userID
+          FROM TB_MEMBER
+         WHERE nickName = #{nickName}
+           AND email = CONCAT(#{email1},'@',#{email2})
+           AND del = 'N'
+    </select>
 
 </mapper>

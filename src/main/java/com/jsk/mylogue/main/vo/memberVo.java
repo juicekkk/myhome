@@ -2,14 +2,20 @@ package com.jsk.mylogue.main.vo;
 
 public class memberVo {
 
+    String mbrNum;
     String userId;
     String userPwd;
+    String newUserPwd;
     String nickName;
     String question;
     String answer;
     String email;
     String email1;
     String email2;
+
+    public String getMbrNum() { return mbrNum; }
+
+    public void setMbrNum(String mbrNum) { this.mbrNum = mbrNum; }
 
     public String getUserId() {
         return userId;
@@ -26,6 +32,10 @@ public class memberVo {
     public void setUserPwd(String userPwd) {
         this.userPwd = userPwd;
     }
+
+    public String getNewUserPwd() { return newUserPwd; }
+
+    public void setNewUserPwd(String newUserPwd) { this.newUserPwd = newUserPwd; }
 
     public String getNickName() {
         return nickName;

@@ -8,4 +8,12 @@ public interface MemberService {
 
     public void memberReg(memberVo param);
 
+    public void memberMod(memberVo param);
+
+    public void memberPwdMod(memberVo param);
+
+    public void memberDel(memberVo param);
+
+    public memberVo memberLoginInfo(memberVo param);
+
 }

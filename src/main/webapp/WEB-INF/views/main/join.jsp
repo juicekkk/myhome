@@ -106,6 +106,11 @@
             return false;
         }
 
+        if($('#userId').val().length < 5){
+            alert('아이디를 5글자 이상 입력해주세요.');
+            return false;
+        }
+
         if($('.userPwd').val() == ''){
             alert('비밀번호를 입력해주세요.');
             return false;

@@ -24,6 +24,26 @@ public class MemberServiceImpl implements MemberService {
         dao.memberReg(param);
     }
 
+    @Override
+    public void memberMod(memberVo param) {
+        dao.memberMod(param);
+    }
+
+    @Override
+    public void memberPwdMod(memberVo param) {
+        dao.memberPwdMod(param);
+    }
+
+    @Override
+    public void memberDel(memberVo param) {
+        dao.memberDel(param);
+    }
+
+    @Override
+    public memberVo memberLoginInfo(memberVo param) {
+        return dao.memberLoginInfo(param);
+    }
+
 
 
 

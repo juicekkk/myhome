@@ -28,25 +28,27 @@
     <div class="backgroundBottom"></div>
 </div>
 
-<div class="loginPopWrap">
+<form method="post" enctype="multipart/form-data" name="loginForm" id="loginForm">
+    <div class="loginPopWrap">
 
-    <div id="loginCloseBtn"><img src="${path}/resources/images/X_icon_black.png"></div>
+        <div id="loginCloseBtn"><img src="${path}/resources/images/X_icon_black.png"></div>
 
-    <span>LOGIN</span>
-    <div class="loginWrap">
-        <div class="login">
-            <input type="text" id="usrId" name="usrId">
-            <input type="password" id="usrPwd" name="usrPwd">
+        <span>LOGIN</span>
+        <div class="loginWrap">
+            <div class="login">
+                <input type="text" id="userId" name="userId">
+                <input type="password" id="userPwd" name="userPwd">
+            </div>
+            <div class="login">
+                <input type="button" class="loginPopBtn" value="ENTER">
+            </div>
         </div>
-        <div class="login">
-            <input type="button" class="loginPopBtn" value="ENTER">
+        <div class="loginBtnWrap">
+            <a href="/find.do"><input type="button" value="아이디 | 비밀번호 찾기"></a>
+            <a href="/join.do"><input type="button" value="회원가입"></a>
         </div>
     </div>
-    <div class="loginBtnWrap">
-        <a href="/find.do"><input type="button" value="아이디 | 비밀번호 찾기"></a>
-        <a href="/join.do"><input type="button" value="회원가입"></a>
-    </div>
-</div>
+</form>
 
 <script type="text/javascript">
     $(function() {
@@ -54,6 +56,36 @@
             $('.loginPopWrap').hide();
             $('.darken').hide();
         });
+    });
+    $('.loginPopBtn').click(function () {
+        if($('#userId').val() == ''){
+            alert('아이디를 입력해주세요.');
+            return false;
+        }
+
+        if($('#userPwd').val() == ''){
+            alert('비밀번호를 입력해주세요.');
+            return false;
+        }
+
+        $.ajax({
+            url:'/memberLogin.do', //request 보낼 서버의 경로
+            type:'post', // 메소드(get, post, put 등)
+            data:$('#loginForm').serialize(), //보낼 데이터
+            dataType : 'json',
+            success: function(data) {
+                //서버로부터 정상적으로 응답이 왔을 때 실행
+                if(data.code == 200 && data.result == 1){
+                    alert("로그인 되었습니다");
+                    window.location = "/";
+                } else {
+                    alert('아이디 또는 패스워드가 일치하지 않습니다.');
+                }
+            }, error:function(request,status,error){
+                alert('오류가 발생했습니다. 관리자에게 문의해주세요.');
+            }
+        });
+
     });
 </script>
 </body>
