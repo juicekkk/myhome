@@ -29,6 +29,10 @@ public class MemberDao extends BaseDao {
         this.update("memberDel", param);
     }
 
+    public String memberIdFind(memberVo param) {
+        return (String) this.select("memberIdFind", param);
+    }
+
     public memberVo memberLoginInfo(memberVo param) {
         return (memberVo) this.select("memberLoginInfo", param);
     }

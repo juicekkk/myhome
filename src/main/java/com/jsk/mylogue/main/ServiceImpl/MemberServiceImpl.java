@@ -40,6 +40,11 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public String memberIdFind(memberVo param) {
+        return dao.memberIdFind(param);
+    }
+
+    @Override
     public memberVo memberLoginInfo(memberVo param) {
         return dao.memberLoginInfo(param);
     }

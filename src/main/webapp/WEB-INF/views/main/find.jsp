@@ -84,15 +84,16 @@
         }
 
         $.ajax({
-            url:'/memberReg.do', //request 보낼 서버의 경로
+            url:'/memberFind.do', //request 보낼 서버의 경로
             type:'post', // 메소드(get, post, put 등)
-            data:$('#memberForm').serialize(), //보낼 데이터
+            data:$('#memberIdFindForm').serialize(), //보낼 데이터
             dataType : 'json',
             success: function(data) {
                 //서버로부터 정상적으로 응답이 왔을 때 실행
-                if(data.code == 200){
-                    alert("회원가입이 정상적으로 처리되었습니다.");
-                    window.location = "/";
+                if(data.code == 200 && data.result != null){
+                    alert("등록된 아이디는 " + data.result + " 입니다.");
+                } else {
+                    alert("일치하는 정보가 없습니다.");
                 }
             }, error:function(request,status,error){
                 alert('오류가 발생했습니다. 관리자에게 문의해주세요.');

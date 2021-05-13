@@ -65,7 +65,7 @@
            AND del = 'N'
     </select>
 
-    <select id="memberId" parameterType="com.jsk.mylogue.main.vo.memberVo" resultType="com.jsk.mylogue.main.vo.memberVo">
+    <select id="memberIdFind" parameterType="com.jsk.mylogue.main.vo.memberVo" resultType="String">
         SELECT CONCAT(SUBSTRING(userID, 1, char_length(userID)-4), "****") AS userID
           FROM TB_MEMBER
          WHERE nickName = #{nickName}

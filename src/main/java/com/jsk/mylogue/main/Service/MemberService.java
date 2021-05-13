@@ -14,6 +14,8 @@ public interface MemberService {
 
     public void memberDel(memberVo param);
 
+    public String memberIdFind(memberVo param);
+
     public memberVo memberLoginInfo(memberVo param);
 
 }

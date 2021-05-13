@@ -126,6 +126,20 @@ public class MemberController {
 		return map;
 	}
 
+	@RequestMapping(value = "memberFind.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Object memberFind(memberVo param) throws Exception {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		String memberId = memberService.memberIdFind(param);
+		if(memberId != null && !"".equals(memberId)) {
+			map.put("result", memberId);
+		}
+		map.put("code", 200);
+
+		return map;
+	}
+
 	@RequestMapping(value = "memberLogin.do", method = RequestMethod.POST)
 	@ResponseBody
 	public Object memberLogin(memberVo param, HttpSession session) throws Exception {
