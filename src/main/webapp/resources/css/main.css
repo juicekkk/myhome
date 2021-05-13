@@ -164,7 +164,7 @@ select { padding: 7px; border: none; background: none; border-bottom: 2px solid 
 /* FIND */
 .findWrap { display: block; margin: 50px auto 30px auto; width: 80%; max-width: 800px;}
 .findWrap .findContentsWrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-content: center; align-items: center;}
-.findWrap .findContentsWrap .findContent { width: 40%; max-width: 280px; padding: 40px; border: 2px solid #323232; background: #fff; opacity: 80%; }
+.findWrap .findContentsWrap .findContent { width: 100%; max-width: 280px; padding: 40px; border: 2px solid #323232; background: #fff; opacity: 80%; }
 .findWrap .findContentsWrap .findContent:nth-child(1) { border: 2px solid #ffca4f;}
 .findWrap .findContentsWrap .findContent .find{ margin: 30px auto; display: flex; flex-wrap: wrap; justify-content: start; align-items: center;}
 .findWrap .findContentsWrap .findContent .find input{ background: none; border-bottom: 2px solid #323232; width: 60%;}

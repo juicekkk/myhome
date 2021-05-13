@@ -38,7 +38,8 @@
                 </div>
             </form>
 
-            <div class="findContent">
+            <div class="findContent" style="position: relative">
+                <div style="width: 100%; height: 100%; opacity: 0.6; background-color:#323232; position: absolute; left: 0; top: 0;">C</div>
                 <div class="find">
                     <label>아이디</label>
                     <input type="text" name="userId" id="userId" placeholder="ID">
