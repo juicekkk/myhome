@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsk.mylogue.main.Dao.boardDao">
+
+    <select id="getListCnt" resultType="Integer" parameterType="com.jsk.mylogue.main.vo.boardVo">
+        SELECT COUNT(1) AS cnt
+          FROM TB_BOARD
+         WHERE categoryNum = #{categoryNum}
+           AND b.del != 'N'
+         LIMIT #{pageStart}, #{pageEnd}+10
+    </select>
+
+    <select id="getList" parameterType="com.jsk.mylogue.main.vo.boardVo" resultType="com.jsk.mylogue.main.vo.boardVo">
+        SELECT b.regNum
+             , b.thumbNail
+             , b.title
+             , b.subTitle
+             , b.hit
+             , b.regDate
+             , m.nickName
+             , c.categoryName
+          FROM TB_BOARD b
+             , TB_MEMBER m
+             , TB_CATEGORY c
+         WHERE c.categoryNum = #{categoryNum}
+           AND b.mbrNum = m.mbrNum
+           AND b.categoryNum = c.categoryNum
+           AND b.del != 'N'
+        <if test="searchType != '' and searchType != null">
+            <choose>
+                <when test="searchType == '1'">b.title LIKE CONCAT('%', #{searchText},'%')</when>
+                <when test="searchType == '2'">(b.title LIKE CONCAT('%', #{searchText},'%') OR b.contents LIKE CONCAT('%', #{searchText},'%'))</when>
+                <when test="searchType == '3'">m.nickname LIKE CONCAT('%', #{searchText},'%')</when>
+            </choose>
+        </if>
+         ORDER BY b.regDate DESC
+         LIMIT #{pageStart}, #{pageEnd}
+    </select>
+
+</mapper>

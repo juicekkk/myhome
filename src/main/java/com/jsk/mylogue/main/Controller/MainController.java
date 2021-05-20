@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import com.jsk.mylogue.main.vo.testVo;
 import com.jsk.mylogue.main.Service.MainService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,12 +57,12 @@ public class MainController {
 		return "main/index.page";
 	}
 
-	@RequestMapping("test.do")
+	/*@RequestMapping("test.do")
 	public String testLogue(Model model) {
 		List<testVo> testpage = mainService.getList();
 		model.addAttribute("testpage",testpage);
 
 		return "logue/test.page";
-	}
+	}*/
 
 }
