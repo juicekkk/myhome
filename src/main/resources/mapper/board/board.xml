@@ -25,6 +25,9 @@
                     AND m.nickname LIKE CONCAT('%', #{searchText},'%')
                 </when>
             </choose>
+            <if test='share != "" and share != null and share == "Y"'>
+                AND b.share = 'Y'
+            </if>
     </select>
 
     <select id="getList" parameterType="com.jsk.mylogue.main.vo.boardVo" resultType="com.jsk.mylogue.main.vo.boardVo">
@@ -46,8 +49,7 @@
            </if>
            AND b.categoryNum = c.categoryNum
            AND b.del = 'N'
-
-            <choose>
+           <choose>
                 <when test='searchType != null and searchType eq "1"'>
                     AND b.title LIKE CONCAT('%', #{searchText},'%')
                 </when>
@@ -57,10 +59,16 @@
                 <when test='searchType != null and searchType eq "3"'>
                     AND m.nickname LIKE CONCAT('%', #{searchText},'%')
                 </when>
-            </choose>
+           </choose>
 
-         ORDER BY b.regDate DESC
-         LIMIT #{pageStart}, #{pageCnt}
+            <if test='share != "" and share != null and share == "Y"'>
+            AND b.share = 'Y'
+            </if>
+            <if test='share != "Y"'>
+            ORDER BY b.regDate DESC
+            </if>
+
+            LIMIT #{pageStart}, #{pageCnt}
     </select>
     
     <update id="boardDel">

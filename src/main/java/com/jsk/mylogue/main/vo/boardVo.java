@@ -13,6 +13,7 @@ public class boardVo {
     String nickname;
     String categoryName;
     String categoryNum;
+    String share;
     Integer pageStart;
     Integer pageCnt;
     String searchType;
@@ -145,5 +146,13 @@ public class boardVo {
 
     public void setMbrNum(Integer mbrNum) {
         this.mbrNum = mbrNum;
+    }
+
+    public String getShare() {
+        return share;
+    }
+
+    public void setShare(String share) {
+        this.share = share;
     }
 }
