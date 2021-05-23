@@ -7,4 +7,8 @@ public interface BoardService {
 
     public List<boardVo> getList(boardVo param);
 
+    public Integer getListCnt(boardVo param);
+
+    public int boardDel(boardVo param);
+
 }

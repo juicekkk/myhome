@@ -14,9 +14,10 @@ public class boardVo {
     String categoryName;
     String categoryNum;
     Integer pageStart;
-    Integer pageEnd;
+    Integer pageCnt;
     String searchType;
     String searchText;
+    Integer mbrNum;
 
     public String getTitle() {
         return title;
@@ -114,12 +115,12 @@ public class boardVo {
         this.pageStart = pageStart;
     }
 
-    public Integer getPageEnd() {
-        return pageEnd;
+    public Integer getPageCnt() {
+        return pageCnt;
     }
 
-    public void setPageEnd(Integer pageEnd) {
-        this.pageEnd = pageEnd;
+    public void setPageCnt(Integer pageCnt) {
+        this.pageCnt = pageCnt;
     }
 
     public String getSearchType() {
@@ -136,5 +137,13 @@ public class boardVo {
 
     public void setSearchText(String searchText) {
         this.searchText = searchText;
+    }
+
+    public Integer getMbrNum() {
+        return mbrNum;
+    }
+
+    public void setMbrNum(Integer mbrNum) {
+        this.mbrNum = mbrNum;
     }
 }

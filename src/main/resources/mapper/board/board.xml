@@ -6,10 +6,25 @@
 
     <select id="getListCnt" resultType="Integer" parameterType="com.jsk.mylogue.main.vo.boardVo">
         SELECT COUNT(1) AS cnt
-          FROM TB_BOARD
+          FROM TB_BOARD b
+             , TB_MEMBER m
          WHERE categoryNum = #{categoryNum}
-           AND b.del != 'N'
-         LIMIT #{pageStart}, #{pageEnd}+10
+           AND b.del = 'N'
+           AND b.mbrNum = m.mbrNum
+           <if test="mbrNum != '' and mbrNum != null">
+           AND b.mbrNum = #{mbrNum}
+           </if>
+            <choose>
+                <when test='searchType != null and searchType eq "1"'>
+                    AND b.title LIKE CONCAT('%', #{searchText},'%')
+                </when>
+                <when test='searchType != null and searchType eq "2"'>
+                    AND (b.title LIKE CONCAT('%', #{searchText},'%') OR b.contents LIKE CONCAT('%', #{searchText},'%'))
+                </when>
+                <when test='searchType != null and searchType eq "3"'>
+                    AND m.nickname LIKE CONCAT('%', #{searchText},'%')
+                </when>
+            </choose>
     </select>
 
     <select id="getList" parameterType="com.jsk.mylogue.main.vo.boardVo" resultType="com.jsk.mylogue.main.vo.boardVo">
@@ -26,17 +41,30 @@
              , TB_CATEGORY c
          WHERE c.categoryNum = #{categoryNum}
            AND b.mbrNum = m.mbrNum
+           <if test="mbrNum != '' and mbrNum != null">
+           AND b.mbrNum = #{mbrNum}
+           </if>
            AND b.categoryNum = c.categoryNum
-           AND b.del != 'N'
-        <if test="searchType != '' and searchType != null">
+           AND b.del = 'N'
+
             <choose>
-                <when test="searchType == '1'">b.title LIKE CONCAT('%', #{searchText},'%')</when>
-                <when test="searchType == '2'">(b.title LIKE CONCAT('%', #{searchText},'%') OR b.contents LIKE CONCAT('%', #{searchText},'%'))</when>
-                <when test="searchType == '3'">m.nickname LIKE CONCAT('%', #{searchText},'%')</when>
+                <when test='searchType != null and searchType eq "1"'>
+                    AND b.title LIKE CONCAT('%', #{searchText},'%')
+                </when>
+                <when test='searchType != null and searchType eq "2"'>
+                    AND (b.title LIKE CONCAT('%', #{searchText},'%') OR b.contents LIKE CONCAT('%', #{searchText},'%'))
+                </when>
+                <when test='searchType != null and searchType eq "3"'>
+                    AND m.nickname LIKE CONCAT('%', #{searchText},'%')
+                </when>
             </choose>
-        </if>
+
          ORDER BY b.regDate DESC
-         LIMIT #{pageStart}, #{pageEnd}
+         LIMIT #{pageStart}, #{pageCnt}
     </select>
+    
+    <update id="boardDel">
+        UPDATE TB_BOARD SET del = 'Y' WHERE regNum = #{regNum}
+    </update>
 
 </mapper>
