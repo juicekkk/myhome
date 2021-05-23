@@ -21,13 +21,23 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Integer getListCnt(boardVo param) {
+    public int getListCnt(boardVo param) {
         return dao.getListCnt(param);
     }
 
     @Override
     public int boardDel(boardVo param) {
         return dao.boardDel(param);
+    }
+
+    @Override
+    public int boardReg(boardVo param) {
+        return dao.boardReg(param);
+    }
+
+    @Override
+    public int boardMod(boardVo param) {
+        return dao.boardMod(param);
     }
 
 }

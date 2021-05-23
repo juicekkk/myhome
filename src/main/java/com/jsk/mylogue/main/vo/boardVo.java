@@ -5,7 +5,7 @@ public class boardVo {
     String title;
     String subTitle;
     String category;
-    String thumbnail;
+    String thumbNail;
     String contents;
     String regNum;
     String hit;
@@ -44,12 +44,12 @@ public class boardVo {
         this.category = category;
     }
 
-    public String getThumbnail() {
-        return thumbnail;
+    public String getThumbNail() {
+        return thumbNail;
     }
 
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setThumbNail(String thumbNail) {
+        this.thumbNail = thumbNail;
     }
 
     public String getContents() {

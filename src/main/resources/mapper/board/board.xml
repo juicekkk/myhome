@@ -75,4 +75,40 @@
         UPDATE TB_BOARD SET del = 'Y' WHERE regNum = #{regNum}
     </update>
 
+    <insert id="boardReg" parameterType="com.jsk.mylogue.main.vo.boardVo">
+        INSERT INTO TB_BOARD ( mbrNum
+             , categoryNum
+             , thumbNail
+             , title
+             , subTitle
+             , contents
+             , hit
+             , share
+             , del
+             , regDate
+             , modDate )
+        VALUES( #{mbrNum}
+             , #{categoryNum}
+             , #{thumbNail}
+             , #{title}
+             , #{subTitle}
+             , #{contents}
+             , 0
+             , #{share}
+             , 'N'
+             , NOW()
+             , null )
+    </insert>
+
+    <update id="boardMod">
+        UPDATE TB_BOARD
+           SET categoryNum = #{categoryNum}
+             , thumbNail = #{thumbNail}
+             , title = #{title}
+             , subTitle = #{subTitle}
+             , contents = #{contents}
+             , share = #{share}
+         WHERE regNum = #{regNum}
+    </update>
+
 </mapper>

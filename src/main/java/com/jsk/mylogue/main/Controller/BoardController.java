@@ -34,13 +34,26 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "boardReg.do", method = RequestMethod.POST)
-	public Object boardReg(boardVo param) throws Exception {
+	@ResponseBody
+	public Object boardReg(@RequestBody boardVo param) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
-		param.getThumbnail();
-		//memberVo memberInfo = memberService.memberLoginInfo(param);
+		//param.getThumbnail();
+		//이미지업로드
 
-		map.put("result", 2);
+		map.put("result", boardService.boardReg(param));
+		return map;
+	}
+
+	@RequestMapping(value = "boardMod.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Object boardMod(@RequestBody boardVo param) throws Exception {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		//param.getThumbnail();
+		//이미지업로드
+
+		map.put("result", boardService.boardMod(param));
 		return map;
 	}
 

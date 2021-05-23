@@ -14,12 +14,20 @@ public class boardDao extends BaseDao {
         return (List<boardVo>) this.list("getList", param);
     }
 
-    public Integer getListCnt(boardVo param) {
+    public int getListCnt(boardVo param) {
         return (Integer) this.select("getListCnt", param);
     }
 
     public int boardDel(boardVo param) {
         return this.update("boardDel", param);
+    }
+
+    public int boardReg(boardVo param) {
+        return (Integer) this.insert("boardReg", param);
+    }
+
+    public int boardMod(boardVo param) {
+        return this.update("boardMod", param);
     }
 
 }
