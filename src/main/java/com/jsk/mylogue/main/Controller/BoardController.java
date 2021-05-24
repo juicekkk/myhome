@@ -41,7 +41,13 @@ public class BoardController {
 		//param.getThumbnail();
 		//이미지업로드
 
-		map.put("result", boardService.boardReg(param));
+		map.put("code", 200);
+		if(boardService.boardReg(param) == 1){
+			map.put("result", boardService.boardReg(param));
+		} else {
+			map.put("result", 2);
+		}
+
 		return map;
 	}
 
@@ -53,7 +59,12 @@ public class BoardController {
 		//param.getThumbnail();
 		//이미지업로드
 
-		map.put("result", boardService.boardMod(param));
+		map.put("code", 200);
+		if(boardService.boardMod(param) == 1){
+			map.put("result", boardService.boardMod(param));
+		} else {
+			map.put("result", 2);
+		}
 		return map;
 	}
 
@@ -84,7 +95,12 @@ public class BoardController {
 	public Object boardDel(@RequestBody boardVo param) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
-		map.put("result", boardService.boardDel(param));
+		map.put("code", 200);
+		if(boardService.boardDel(param) == 1){
+			map.put("result", boardService.boardDel(param));
+		} else {
+			map.put("result", 2);
+		}
 		return map;
 	}
 
