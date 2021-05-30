@@ -79,6 +79,8 @@
                 //서버로부터 정상적으로 응답이 왔을 때 실행
                 if(data.code == 200){
                     alert("등록되었습니다.");
+                    let categoryCode = '${categoryCode}';
+                    $(location).attr('href','/'+categoryCode+".do");
                 }
             }, error: function (request, status, error) {
                 alert('오류가 발생했습니다. 관리자에게 문의해주세요.');

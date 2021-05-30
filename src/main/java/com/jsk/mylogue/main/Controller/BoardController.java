@@ -1,6 +1,7 @@
 package com.jsk.mylogue.main.Controller;
 
 import com.jsk.mylogue.main.Service.BoardService;
+import com.jsk.mylogue.main.Service.FileUploadService;
 import com.jsk.mylogue.main.vo.boardVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,20 +16,23 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
-
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class BoardController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
 	@Autowired
 	private BoardService boardService;
+
+	@Autowired
+	FileUploadService fileUploadService;
 
 	@RequestMapping("/write/{categoryCode}.do")
 	public ModelAndView boardWrite(@PathVariable String categoryCode) throws Exception {
@@ -40,13 +44,14 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "boardReg.do", method = RequestMethod.POST)
+	@ResponseBody
 	public Object boardReg(@RequestParam("thumbnail") MultipartFile thumbnail
-							, @RequestParam String title
-							, @RequestParam String subTitle
-							, @RequestParam String categoryCode
-							, @RequestParam String contents
-							, @RequestParam String share
-							) throws Exception {
+			, @RequestParam String title
+			, @RequestParam String subTitle
+			, @RequestParam String categoryCode
+			, @RequestParam String contents
+			, @RequestParam String share
+			, HttpServletRequest req) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		boardVo param = new boardVo();
 		param.setTitle(title);
@@ -59,6 +64,13 @@ public class BoardController {
 
 		//param.getThumbnail();
 		//이미지업로드
+		String url = fileUploadService.restore(thumbnail);
+		System.out.println(":::::::: " + url);
+
+
+		if (!thumbnail.getOriginalFilename().isEmpty()) {
+			thumbnail.transferTo(new File("/hproj/tomcat/webapps/ROOT/resources/images/contents/board1", thumbnail.getOriginalFilename()));
+		}
 
 		map.put("code", 200);
 		if(boardService.boardReg(param) == 1){
@@ -131,3 +143,4 @@ public class BoardController {
 	}
 
 }
+
