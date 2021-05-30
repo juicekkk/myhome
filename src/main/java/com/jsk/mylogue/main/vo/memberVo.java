@@ -12,6 +12,7 @@ public class memberVo {
     String email;
     String email1;
     String email2;
+    String isKakao;
 
     public String getMbrNum() { return mbrNum; }
 
@@ -83,5 +84,13 @@ public class memberVo {
 
     public void setEmail2(String email2) {
         this.email2 = email2;
+    }
+
+    public String getIsKakao() {
+        return isKakao;
+    }
+
+    public void setIsKakao(String isKakao) {
+        this.isKakao = isKakao;
     }
 }

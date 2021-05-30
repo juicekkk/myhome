@@ -14,7 +14,7 @@
 
     <div class="contents">
 
-        <form method="post" enctype="multipart/form-data" id="writeForm">
+        <form method="POST" enctype="multipart/form-data" id="writeForm">
 
             <div class="boardContent">
                 <span>CATEGORY</span>
@@ -37,7 +37,15 @@
                 <span>THUMBNAIL</span>
                 <input type="file" name="thumbnail" class="thumbnail">
             </div>
-m
+
+            <div class="boardContent">
+                <span>SHARE</span>
+                <div style="margin-top: 15px;">
+                    <input type="radio" name="share" value="Y" style="width: 30px">Y
+                    <input type="radio" name="share" value="N" checked="checked" style="width: 30px">N
+                </div>
+            </div>
+
             <div class="boardContent">
                 <span>CONTENT</span>
                 <textarea name="contents"></textarea>
@@ -55,19 +63,23 @@ m
 
 <script>
     $('#boardReg').click(function () {
-        console.log('zz');
+        var form = $('#writeForm')[0]
+        var data = new FormData(form);
 
         $.ajax({
-            url: '/boardReg.do', //request 보낼 서버의 경로
-            type: 'post', // 메소드(get, post, put 등)
-            data: $('#writeForm').serialize(), //보낼 데이터
-            dataType: 'json',
-            success: function (data) {
+            url: '/boardReg.do' //request 보낼 서버의 경로
+            , type: "POST"
+            , enctype: 'multipart/form-data'
+            , data: data
+            , processData: false
+            , contentType: false
+            , cache: false
+            , success: function (data) {
+                console.log(data);
                 //서버로부터 정상적으로 응답이 왔을 때 실행
-                /*if(data.code == 200){
-                    alert("회원가입이 정상적으로 처리되었습니다.");
-                    window.location = "/";
-                }*/
+                if(data.code == 200){
+                    alert("등록되었습니다.");
+                }
             }, error: function (request, status, error) {
                 alert('오류가 발생했습니다. 관리자에게 문의해주세요.');
             }

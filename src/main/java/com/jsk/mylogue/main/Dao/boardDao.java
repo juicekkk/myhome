@@ -30,4 +30,8 @@ public class boardDao extends BaseDao {
         return this.update("boardMod", param);
     }
 
+    public String categoryNum(String param) {
+        return (String) this.select("categoryNum", param);
+    }
+
 }

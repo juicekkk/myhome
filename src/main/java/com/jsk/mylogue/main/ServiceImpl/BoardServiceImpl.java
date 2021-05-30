@@ -40,4 +40,9 @@ public class BoardServiceImpl implements BoardService {
         return dao.boardMod(param);
     }
 
+    @Override
+    public String categoryNum(String param) {
+        return dao.categoryNum(param);
+    }
+
 }

@@ -5,10 +5,16 @@ import com.jsk.mylogue.main.vo.boardVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 
@@ -34,16 +40,29 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "boardReg.do", method = RequestMethod.POST)
-	@ResponseBody
-	public Object boardReg(@RequestBody boardVo param) throws Exception {
+	public Object boardReg(@RequestParam("thumbnail") MultipartFile thumbnail
+							, @RequestParam String title
+							, @RequestParam String subTitle
+							, @RequestParam String categoryCode
+							, @RequestParam String contents
+							, @RequestParam String share
+							) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		boardVo param = new boardVo();
+		param.setTitle(title);
+		param.setSubTitle(subTitle);
+		String categoryNum = boardService.categoryNum(categoryCode);
+		param.setCategoryNum(categoryNum);
+		param.setContents(contents);
+		param.setShare(share);
+		param.setThumbNail("thumbnail.jpg");
 
 		//param.getThumbnail();
 		//이미지업로드
 
 		map.put("code", 200);
 		if(boardService.boardReg(param) == 1){
-			map.put("result", boardService.boardReg(param));
+			map.put("result", 1);
 		} else {
 			map.put("result", 2);
 		}
@@ -102,6 +121,13 @@ public class BoardController {
 			map.put("result", 2);
 		}
 		return map;
+	}
+
+	@Bean
+	public MultipartResolver multipartResolver() {
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+		multipartResolver.setMaxUploadSize(2000000000);
+		return multipartResolver;
 	}
 
 }

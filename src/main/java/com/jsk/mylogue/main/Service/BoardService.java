@@ -15,4 +15,6 @@ public interface BoardService {
 
     public int boardMod(boardVo param);
 
+    public String categoryNum(String param);
+
 }

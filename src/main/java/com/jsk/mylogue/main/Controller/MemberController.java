@@ -150,7 +150,7 @@ public class MemberController {
 		if(memberInfo != null){
 			AES256Util encryption = new AES256Util();
 			String decryptPwd = encryption.decrypt(memberInfo.getUserPwd());
-			if(param.getUserPwd().equals(decryptPwd)){
+			if(param.getUserPwd().equals(decryptPwd) || param.getIsKakao().equals("Y")){
 				session.setAttribute("mbrNum", memberInfo.getMbrNum());
 				session.setAttribute("userId", memberInfo.getUserId());
 				session.setAttribute("nickName", memberInfo.getNickName());

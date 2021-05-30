@@ -111,4 +111,8 @@
          WHERE regNum = #{regNum}
     </update>
 
+    <select id="categoryNum" resultType="String" parameterType="String">
+        SELECT categoryNum FROM TB_CATEGORY WHERE categoryName = UPPER(#{categoryCode})
+    </select>
+
 </mapper>
