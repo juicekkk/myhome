@@ -19,6 +19,8 @@ public class boardVo {
     String searchType;
     String searchText;
     Integer mbrNum;
+    String like;
+    String scrap;
 
     public String getTitle() {
         return title;
@@ -154,5 +156,21 @@ public class boardVo {
 
     public void setShare(String share) {
         this.share = share;
+    }
+
+    public String getLike() {
+        return like;
+    }
+
+    public void setLike(String like) {
+        this.like = like;
+    }
+
+    public String getScrap() {
+        return scrap;
+    }
+
+    public void setScrap(String scrap) {
+        this.scrap = scrap;
     }
 }

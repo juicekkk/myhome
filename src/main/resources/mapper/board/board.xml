@@ -8,6 +8,12 @@
         SELECT COUNT(1) AS cnt
           FROM TB_BOARD b
              , TB_MEMBER m
+             <if test='like != "" and like != null and like == "Y"'>
+                , TB_LIKE l
+             </if>
+             <if test='scrap != "" and scrap != null and scrap == "Y"'>
+                , TB_SCRAP s
+             </if>
          WHERE categoryNum = #{categoryNum}
            AND b.del = 'N'
            AND b.mbrNum = m.mbrNum
@@ -27,6 +33,14 @@
             </choose>
             <if test='share != "" and share != null and share == "Y"'>
                 AND b.share = 'Y'
+            </if>
+            <if test='like != "" and like != null and like == "Y"'>
+                AND b.mbrNum = l.mbrNum
+                AND b.regNum = l.regNum
+            </if>
+            <if test='scrap != "" and scrap != null and scrap == "Y"'>
+                AND b.mbrNum = s.mbrNum
+                AND b.regNum = l.regNum
             </if>
     </select>
 
@@ -76,7 +90,7 @@
             </if>
             <if test='scrap != "" and scrap != null and scrap == "Y"'>
                 AND b.mbrNum = s.mbrNum
-                AND b.regNum = s.regNum
+                AND b.regNum = l.regNum
             </if>
             <if test='share != "Y"'>
             ORDER BY b.regDate DESC
