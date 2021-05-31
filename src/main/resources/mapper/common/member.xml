@@ -18,12 +18,12 @@
              , answer
              , regDate )
         VALUES ( #{userId}
-             , #{userPwd}
-             , #{nickName}
-             , CONCAT(#{email1},'@',#{email2})
-             , #{question}
-             , #{answer}
-              , NOW() )
+             , IFNULL(#{userPwd}, "")
+             , IFNULL(#{nickName}, "")
+             , IFNULL(CONCAT(#{email1},'@',#{email2}), "")
+             , IFNULL(#{question}, 0)
+             , IFNULL(#{answer}, "")
+             , NOW() )
     </insert>
 
     <update id="memberMod" parameterType="com.jsk.mylogue.main.vo.memberVo">
