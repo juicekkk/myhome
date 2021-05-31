@@ -34,4 +34,28 @@ public class boardDao extends BaseDao {
         return (String) this.select("categoryNum", param);
     }
 
+    public int scrapCnt(boardVo param) {
+        return (Integer) this.select("scrapCnt", param);
+    }
+
+    public int likeCnt(boardVo param) {
+        return (Integer) this.select("likeCnt", param);
+    }
+
+    public int likeReg(boardVo param) {
+        return (Integer) this.insert("likeReg", param);
+    }
+
+    public int likeDel(boardVo param) {
+        return (Integer) this.delete("likeDel", param);
+    }
+
+    public int scrapReg(boardVo param) {
+        return (Integer) this.insert("scrapReg", param);
+    }
+
+    public int scrapDel(boardVo param) {
+        return (Integer) this.delete("scrapDel", param);
+    }
+
 }

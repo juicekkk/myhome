@@ -142,5 +142,85 @@ public class BoardController {
 		return multipartResolver;
 	}
 
+	@RequestMapping(value = "likeReg.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Object likeReg(@RequestBody boardVo param) throws Exception {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("code", 200);
+		int likeCnt = boardService.likeCnt(param);
+		if(likeCnt < 1){
+			if(boardService.likeReg(param) == 1){
+				map.put("result", 1);
+			} else {
+				map.put("result", 2);
+			}
+		} else {
+			map.put("result", "이미 좋아요를 누르셨습니다.");
+		}
+
+		return map;
+	}
+
+	@RequestMapping(value = "likeDel.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Object likeDel(@RequestBody boardVo param) throws Exception {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("code", 200);
+		int likeCnt = boardService.likeCnt(param);
+		if(likeCnt > 0){
+			if(boardService.likeDel(param) == 1){
+				map.put("result", 1);
+			} else {
+				map.put("result", 2);
+			}
+		} else {
+			map.put("result", "삭제할 정보가 없습니다.");
+		}
+
+		return map;
+	}
+
+	@RequestMapping(value = "scrapReg.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Object scrapReg(@RequestBody boardVo param) throws Exception {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("code", 200);
+		int scrapCnt = boardService.scrapCnt(param);
+		if(scrapCnt < 1){
+			if(boardService.scrapReg(param) == 1){
+				map.put("result", 1);
+			} else {
+				map.put("result", 2);
+			}
+		} else {
+			map.put("result", "이미 스크랩한 게시물 입니다.");
+		}
+
+		return map;
+	}
+
+	@RequestMapping(value = "scrapDel.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Object scrapDel(@RequestBody boardVo param) throws Exception {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("code", 200);
+		int scrapCnt = boardService.scrapCnt(param);
+		if(scrapCnt > 0){
+			if(boardService.scrapDel(param) == 1){
+				map.put("result", 1);
+			} else {
+				map.put("result", 2);
+			}
+		} else {
+			map.put("result", "삭제할 정보가 없습니다.");
+		}
+
+		return map;
+	}
+
 }
 

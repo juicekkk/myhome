@@ -42,6 +42,12 @@
           FROM TB_BOARD b
              , TB_MEMBER m
              , TB_CATEGORY c
+             <if test='like != "" and like != null and like == "Y"'>
+                 , TB_LIKE l
+             </if>
+             <if test='scrap != "" and scrap != null and scrap == "Y"'>
+                 , TB_SCRAP s
+             </if>
          WHERE c.categoryNum = #{categoryNum}
            AND b.mbrNum = m.mbrNum
            <if test="mbrNum != '' and mbrNum != null">
@@ -64,10 +70,17 @@
             <if test='share != "" and share != null and share == "Y"'>
             AND b.share = 'Y'
             </if>
+            <if test='like != "" and like != null and like == "Y"'>
+                AND b.mbrNum = l.mbrNum
+                AND b.regNum = l.regNum
+            </if>
+            <if test='scrap != "" and scrap != null and scrap == "Y"'>
+                AND b.mbrNum = s.mbrNum
+                AND b.regNum = s.regNum
+            </if>
             <if test='share != "Y"'>
             ORDER BY b.regDate DESC
             </if>
-
             LIMIT #{pageStart}, #{pageCnt}
     </select>
     
@@ -114,5 +127,32 @@
     <select id="categoryNum" resultType="String" parameterType="String">
         SELECT categoryNum FROM TB_CATEGORY WHERE categoryName = UPPER(#{categoryCode})
     </select>
+
+    <select id="likeCnt" resultType="Integer" parameterType="com.jsk.mylogue.main.vo.boardVo">
+        SELECT COUNT(*) AS CNT FROM TB_LIKE WHERE mbrNum = #{mbrNum} AND regNum = #{regNum}
+    </select>
+
+    <select id="scrapCnt" resultType="Integer" parameterType="com.jsk.mylogue.main.vo.boardVo">
+        SELECT COUNT(*) AS CNT FROM TB_SCRAP WHERE mbrNum = #{mbrNum} AND regNum = #{regNum}
+    </select>
+
+    <insert id="likeReg" parameterType="com.jsk.mylogue.main.vo.boardVo">
+        INSERT INTO TB_LIKE ( mbrNum, regNum )
+        VALUES( #{mbrNum}, #{regNum})
+    </insert>
+
+    <delete id="likeDel" parameterType="com.jsk.mylogue.main.vo.boardVo">
+        DELETE FROM TB_LIKE WHERE mbrNum = #{mbrNum} AND regNum = #{regNum}
+    </delete>
+
+    <insert id="scrapReg" parameterType="com.jsk.mylogue.main.vo.boardVo">
+        INSERT INTO TB_SCRAP ( mbrNum, regNum )
+        VALUES( #{mbrNum}, #{regNum})
+    </insert>
+
+    <delete id="scrapDel" parameterType="com.jsk.mylogue.main.vo.boardVo">
+        DELETE FROM TB_SCRAP WHERE mbrNum = #{mbrNum} AND regNum = #{regNum}
+    </delete>
+
 
 </mapper>

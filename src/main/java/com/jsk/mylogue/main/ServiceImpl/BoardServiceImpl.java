@@ -45,4 +45,34 @@ public class BoardServiceImpl implements BoardService {
         return dao.categoryNum(param);
     }
 
+    @Override
+    public int scrapCnt(boardVo param) {
+        return dao.scrapCnt(param);
+    }
+
+    @Override
+    public int likeCnt(boardVo param) {
+        return dao.likeCnt(param);
+    }
+
+    @Override
+    public int likeReg(boardVo param) {
+        return dao.likeReg(param);
+    }
+
+    @Override
+    public int likeDel(boardVo param) {
+        return dao.likeDel(param);
+    }
+
+    @Override
+    public int scrapReg(boardVo param) {
+        return dao.scrapReg(param);
+    }
+
+    @Override
+    public int scrapDel(boardVo param) {
+        return dao.scrapDel(param);
+    }
+
 }

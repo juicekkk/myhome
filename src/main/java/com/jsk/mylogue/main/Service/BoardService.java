@@ -17,4 +17,16 @@ public interface BoardService {
 
     public String categoryNum(String param);
 
+    public int scrapCnt(boardVo param);
+
+    public int likeCnt(boardVo param);
+
+    public int likeReg(boardVo param);
+
+    public int likeDel(boardVo param);
+
+    public int scrapReg(boardVo param);
+
+    public int scrapDel(boardVo param);
+
 }
