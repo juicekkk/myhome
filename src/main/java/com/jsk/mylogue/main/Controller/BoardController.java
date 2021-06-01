@@ -69,7 +69,7 @@ public class BoardController {
 
 
 		if (!thumbnail.getOriginalFilename().isEmpty()) {
-			thumbnail.transferTo(new File("/hproj/tomcat/webapps/ROOT/resources/images/contents/board1", thumbnail.getOriginalFilename()));
+			thumbnail.transferTo(new File("/tomcat/webapps/ROOT/resources/images/contents/board1", thumbnail.getOriginalFilename()));
 		}
 
 		map.put("code", 200);

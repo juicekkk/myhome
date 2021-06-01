@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -54,7 +55,7 @@ public class MemberController {
 
 	@RequestMapping(value = "dupliChk.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Object dupliChk(String userId) {
+	public Object dupliChk(@RequestBody String userId) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		Integer userChkVal = memberService.dupliChk(userId);
 		map.put("code", 200);
@@ -64,12 +65,14 @@ public class MemberController {
 
 	@RequestMapping(value = "memberReg.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Object memberReg(memberVo param) throws Exception {
+	public Object memberReg(@RequestBody memberVo param) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		AES256Util encryption = new AES256Util();
-		String encryptPwd = encryption.encrypt(param.getUserPwd());
-		param.setUserPwd(encryptPwd);
+		if(!param.getIsKakao().equals("Y")) {
+			String encryptPwd = encryption.encrypt(param.getUserPwd());
+			param.setUserPwd(encryptPwd);
+		}
 
 		memberService.memberReg(param);
 		map.put("code", 200);
@@ -78,7 +81,7 @@ public class MemberController {
 
 	@RequestMapping(value = "memberMod.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Object memberMod(memberVo param, HttpSession session) throws Exception {
+	public Object memberMod(@RequestBody memberVo param, HttpSession session) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		param.setMbrNum((String) session.getAttribute("mbrNum"));
@@ -89,7 +92,7 @@ public class MemberController {
 
 	@RequestMapping(value = "memberPwdMod.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Object memberPwdMod(memberVo param, HttpSession session) throws Exception {
+	public Object memberPwdMod(@RequestBody memberVo param, HttpSession session) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		param.setMbrNum((String) session.getAttribute("mbrNum"));
@@ -116,7 +119,7 @@ public class MemberController {
 
 	@RequestMapping(value = "memberDel.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Object memberDel(memberVo param, HttpSession session) throws Exception {
+	public Object memberDel(@RequestBody memberVo param, HttpSession session) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		param.setMbrNum((String) session.getAttribute("mbrNum"));
@@ -128,7 +131,7 @@ public class MemberController {
 
 	@RequestMapping(value = "memberFind.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Object memberFind(memberVo param) throws Exception {
+	public Object memberFind(@RequestBody memberVo param) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		String memberId = memberService.memberIdFind(param);
@@ -139,18 +142,20 @@ public class MemberController {
 
 		return map;
 	}
-
 	@RequestMapping(value = "memberLogin.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Object memberLogin(memberVo param, HttpSession session) throws Exception {
+	public Object memberLogin(@RequestBody memberVo param, HttpSession session) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		memberVo memberInfo = memberService.memberLoginInfo(param);
 
 		if(memberInfo != null){
 			AES256Util encryption = new AES256Util();
-			String decryptPwd = encryption.decrypt(memberInfo.getUserPwd());
-			if(param.getUserPwd().equals(decryptPwd) || param.getIsKakao().equals("Y")){
+			String decryptPwd = "";
+			if(memberInfo.getUserPwd() != null && !param.getIsKakao().equals("Y")) {
+				decryptPwd = encryption.decrypt(memberInfo.getUserPwd());
+			}
+			if((param.getUserPwd() != null && param.getUserPwd().equals(decryptPwd)) || param.getIsKakao().equals("Y")){
 				session.setAttribute("mbrNum", memberInfo.getMbrNum());
 				session.setAttribute("userId", memberInfo.getUserId());
 				session.setAttribute("nickName", memberInfo.getNickName());
@@ -168,7 +173,7 @@ public class MemberController {
 
 	@RequestMapping(value = "memberLogout.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Object memberLogout(memberVo param, HttpSession session) throws Exception {
+	public Object memberLogout(@RequestBody memberVo param, HttpSession session) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		session.invalidate();
