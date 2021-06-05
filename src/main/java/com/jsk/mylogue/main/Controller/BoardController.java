@@ -156,7 +156,7 @@ public class BoardController {
 				map.put("result", 2);
 			}
 		} else {
-			map.put("result", "이미 좋아요를 누르셨습니다.");
+			map.put("result", 3);
 		}
 
 		return map;
@@ -176,7 +176,7 @@ public class BoardController {
 				map.put("result", 2);
 			}
 		} else {
-			map.put("result", "삭제할 정보가 없습니다.");
+			map.put("result", 3);
 		}
 
 		return map;
@@ -196,7 +196,7 @@ public class BoardController {
 				map.put("result", 2);
 			}
 		} else {
-			map.put("result", "이미 스크랩한 게시물 입니다.");
+			map.put("result", 3);
 		}
 
 		return map;
@@ -216,7 +216,7 @@ public class BoardController {
 				map.put("result", 2);
 			}
 		} else {
-			map.put("result", "삭제할 정보가 없습니다.");
+			map.put("result", 3);
 		}
 
 		return map;
