@@ -14,8 +14,10 @@
              <if test='scrap != "" and scrap != null and scrap == "Y"'>
                 , TB_SCRAP s
              </if>
-         WHERE categoryNum = #{categoryNum}
-           AND b.del = 'N'
+         WHERE b.del = 'N'
+            <if test="categoryNum != '' and categoryNum != null">
+                AND b.categoryNum = #{categoryNum}
+            </if>
            AND b.mbrNum = m.mbrNum
            <if test="mbrNum != '' and mbrNum != null">
            AND b.mbrNum = #{mbrNum}
@@ -53,6 +55,10 @@
              , b.regDate
              , m.nickName
              , c.categoryName
+             , (SELECT COUNT(*) FROM TB_LIKE l where b.regNum = l.regNum) AS likeCnt
+             <if test="mbrNum != '' and mbrNum != null">
+             , IF((SELECT COUNT(*) FROM TB_LIKE l WHERE  b.regNum = l.regNum and l.mbrNum = #{mbrNum}) = '1', 'Y', 'N') AS likeYn
+             </if>
           FROM TB_BOARD b
              , TB_MEMBER m
              , TB_CATEGORY c
@@ -62,13 +68,15 @@
              <if test='scrap != "" and scrap != null and scrap == "Y"'>
                  , TB_SCRAP s
              </if>
-         WHERE c.categoryNum = #{categoryNum}
+        WHERE b.del = 'N'
+            <if test="categoryNum != '' and categoryNum != null">
+                AND b.categoryNum = #{categoryNum}
+            </if>
            AND b.mbrNum = m.mbrNum
            <if test="mbrNum != '' and mbrNum != null">
            AND b.mbrNum = #{mbrNum}
            </if>
            AND b.categoryNum = c.categoryNum
-           AND b.del = 'N'
            <choose>
                 <when test='searchType != null and searchType eq "1"'>
                     AND b.title LIKE CONCAT('%', #{searchText},'%')

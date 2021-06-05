@@ -159,6 +159,9 @@ public class MemberController {
 				session.setAttribute("mbrNum", memberInfo.getMbrNum());
 				session.setAttribute("userId", memberInfo.getUserId());
 				session.setAttribute("nickName", memberInfo.getNickName());
+				map.put("mbrNum", memberInfo.getMbrNum());
+				map.put("userId", memberInfo.getUserId());
+				map.put("nickName", memberInfo.getNickName());
 				map.put("result", 1);
 			} else {
 				map.put("result", 2);

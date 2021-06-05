@@ -64,13 +64,13 @@ public class BoardController {
 
 		//param.getThumbnail();
 		//이미지업로드
-		String url = fileUploadService.restore(thumbnail);
-		System.out.println(":::::::: " + url);
+		/*String url = fileUploadService.restore(thumbnail);
+		System.out.println(":::::::: " + url);*/
 
 
-		if (!thumbnail.getOriginalFilename().isEmpty()) {
+		/*if (!thumbnail.getOriginalFilename().isEmpty()) {
 			thumbnail.transferTo(new File("/tomcat/webapps/ROOT/resources/images/contents/board1", thumbnail.getOriginalFilename()));
-		}
+		}*/
 
 		map.put("code", 200);
 		if(boardService.boardReg(param) == 1){
@@ -108,7 +108,7 @@ public class BoardController {
 			param.setPageCnt(10);
 		}
 
-		if("".equals(param.getPageStart()) || param.getPageStart() < 1){
+		if(param.getPageCnt() != null ||  "".equals(param.getPageStart()) || param.getPageStart() < 1){
 			param.setPageStart(0);
 		} else {
 			param.setPageStart((param.getPageStart()-1) * param.getPageCnt());

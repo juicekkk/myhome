@@ -21,6 +21,8 @@ public class boardVo {
     Integer mbrNum;
     String like;
     String scrap;
+    String likeCnt;
+    String likeYn;
 
     public String getTitle() {
         return title;
@@ -172,5 +174,21 @@ public class boardVo {
 
     public void setScrap(String scrap) {
         this.scrap = scrap;
+    }
+
+    public String getLikeCnt() {
+        return likeCnt;
+    }
+
+    public void setLikeCnt(String likeCnt) {
+        this.likeCnt = likeCnt;
+    }
+
+    public String getLikeYn() {
+        return likeYn;
+    }
+
+    public void setLikeYn(String likeYn) {
+        this.likeYn = likeYn;
     }
 }

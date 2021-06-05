@@ -12,8 +12,8 @@ public class FileUploadService {
     // 리눅스 기준으로 파일 경로를 작성 ( 루트 경로인 /으로 시작한다. )
     // 윈도우라면 workspace의 드라이브를 파악하여 JVM이 알아서 처리해준다.
     // 따라서 workspace가 C드라이브에 있다면 C드라이브에 upload 폴더를 생성해 놓아야 한다.
-    private static final String SAVE_PATH = "/home/hosting_users/hproj/www/tomcat/webapps";
-    private static final String PREFIX_URL = "/upload/";
+    private static final String SAVE_PATH = "/tomcat/webapps/ROOT/resources/images/contents";
+    private static final String PREFIX_URL = "/board1/";
 
     public String restore(MultipartFile multipartFile) {
         String url = null;
@@ -34,7 +34,7 @@ public class FileUploadService {
             System.out.println("saveFileName : " + saveFileName);
 
             writeFile(multipartFile, saveFileName);
-            url = PREFIX_URL + saveFileName;
+            //url = PREFIX_URL + saveFileName;
         }
         catch (IOException e) {
             // 원래라면 RuntimeException 을 상속받은 예외가 처리되어야 하지만
