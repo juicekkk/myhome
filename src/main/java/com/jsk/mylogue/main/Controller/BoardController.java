@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -71,12 +72,13 @@ public class BoardController {
 			String storedFileName = originalFile;
 
 			//파일을 저장하기 위한 파일 객체 생성
+			long currentDate = System.currentTimeMillis();
 			String filePath = req.getSession().getServletContext().getRealPath("/")+"resources/images/contents/";
-			File file = new File(filePath + storedFileName);
+			File file = new File(filePath + currentDate + "-" + storedFileName);
 			//파일 저장
 			thumbnail.transferTo(file);
 
-			param.setThumbNail("http://hproj.cafe24.com/resources/images/contents/" + storedFileName);
+			param.setThumbNail("http://hproj.cafe24.com/resources/images/contents/" + currentDate + "-" + storedFileName);
 		} else {
 			param.setThumbNail("http://hproj.cafe24.com/resources/images/no_Image.png");
 		}
@@ -226,6 +228,59 @@ public class BoardController {
 			}
 		} else {
 			map.put("result", 3);
+		}
+
+		return map;
+	}
+
+	@RequestMapping(value = "upload.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Object upload(@RequestParam(value = "thumbnail", required = false) MultipartFile thumbnail
+			, @RequestParam String title
+			, @RequestParam String subTitle
+			, @RequestParam String categoryCode
+			, @RequestParam String contents
+			, @RequestParam String share
+			, HttpServletRequest req) throws Exception {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		boardVo param = new boardVo();
+
+		param.setTitle(new String(title.getBytes("8859_1"),"utf-8"));
+		param.setSubTitle(new String(subTitle.getBytes("8859_1"),"utf-8"));
+		String categoryNum = boardService.categoryNum(categoryCode);
+		param.setCategoryNum(categoryNum);
+		param.setContents(new String(contents.getBytes("8859_1"),"utf-8"));
+		param.setShare(share);
+
+		//이미지업로드
+		String url = "";
+		if(thumbnail != null){
+			//파일명
+			String originalFile = thumbnail.getOriginalFilename();
+			//파일명 중 확장자만 추출                                                //lastIndexOf(".") - 뒤에 있는 . 의 index번호
+			String originalFileExtension = originalFile.substring(originalFile.lastIndexOf("."));
+			String storedFileName = originalFile;
+
+			//파일을 저장하기 위한 파일 객체 생성
+			long currentDate = System.currentTimeMillis();
+			String fileName = new String(storedFileName.getBytes("8859_1"),"utf-8");
+			String filePath = req.getSession().getServletContext().getRealPath("/")+"resources/images/contents/";
+			File file = new File(filePath + currentDate + "-" + fileName);
+			//파일 저장
+			thumbnail.transferTo(file);
+
+			param.setThumbNail("http://hproj.cafe24.com/resources/images/contents/" + currentDate + "-" + fileName);
+		} else {
+			param.setThumbNail("http://hproj.cafe24.com/resources/images/no_Image.png");
+		}
+
+
+
+		map.put("code", 200);
+		if(boardService.boardReg(param) == 1){
+			map.put("result", 1);
+		} else {
+			map.put("result", 2);
 		}
 
 		return map;
