@@ -45,7 +45,7 @@ public class BoardController {
 
 	@RequestMapping(value = "boardReg.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Object boardReg(@RequestParam("thumbnail") MultipartFile thumbnail
+	public Object boardReg(@RequestParam(value = "thumbnail", required = false) MultipartFile thumbnail
 			, @RequestParam String title
 			, @RequestParam String subTitle
 			, @RequestParam String categoryCode
@@ -60,17 +60,26 @@ public class BoardController {
 		param.setCategoryNum(categoryNum);
 		param.setContents(contents);
 		param.setShare(share);
-		param.setThumbNail("thumbnail.jpg");
 
-		//param.getThumbnail();
 		//이미지업로드
-		/*String url = fileUploadService.restore(thumbnail);
-		System.out.println(":::::::: " + url);*/
+		String url = "";
+		if(thumbnail != null){
+			//파일명
+			String originalFile = thumbnail.getOriginalFilename();
+			//파일명 중 확장자만 추출                                                //lastIndexOf(".") - 뒤에 있는 . 의 index번호
+			String originalFileExtension = originalFile.substring(originalFile.lastIndexOf("."));
+			String storedFileName = originalFile;
 
+			//파일을 저장하기 위한 파일 객체 생성
+			String filePath = req.getSession().getServletContext().getRealPath("/")+"/resources/images/contents/";
+			File file = new File(filePath + storedFileName);
+			//파일 저장
+			thumbnail.transferTo(file);
 
-		/*if (!thumbnail.getOriginalFilename().isEmpty()) {
-			thumbnail.transferTo(new File("/tomcat/webapps/ROOT/resources/images/contents/board1", thumbnail.getOriginalFilename()));
-		}*/
+			param.setThumbNail(filePath + storedFileName);
+		} else {
+			param.setThumbNail("-");
+		}
 
 		map.put("code", 200);
 		if(boardService.boardReg(param) == 1){
@@ -217,6 +226,60 @@ public class BoardController {
 			}
 		} else {
 			map.put("result", 3);
+		}
+
+		return map;
+	}
+
+	@RequestMapping(value = "upload.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Object upload(@RequestParam(value = "thumbnail", required = false) MultipartFile thumbnail
+			, @RequestParam String title
+			, @RequestParam String subTitle
+			, @RequestParam String categoryCode
+			, @RequestParam String contents
+			, @RequestParam String share
+			, HttpServletRequest req) throws Exception {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		boardVo param = new boardVo();
+		param.setTitle(title);
+		param.setSubTitle(subTitle);
+		String categoryNum = boardService.categoryNum(categoryCode);
+		param.setCategoryNum(categoryNum);
+		param.setContents(contents);
+		param.setShare(share);
+
+		//param.getThumbnail();
+		//이미지업로드
+		String url = "";
+		if(thumbnail != null){
+			//파일명
+			String originalFile = thumbnail.getOriginalFilename();
+			//파일명 중 확장자만 추출                                                //lastIndexOf(".") - 뒤에 있는 . 의 index번호
+			String originalFileExtension = originalFile.substring(originalFile.lastIndexOf("."));
+			String storedFileName = originalFile;
+
+			//파일을 저장하기 위한 파일 객체 생성
+			String filePath = req.getSession().getServletContext().getRealPath("/")+"/resources/images/contents/";
+			File file = new File(filePath + storedFileName);
+			//파일 저장
+			thumbnail.transferTo(file);
+
+			//System.out.println(studentNumber + "가 업로드한 파일은");
+			System.out.println(originalFile + "은 업로드한 파일이다.");
+			System.out.println(storedFileName + "라는 이름으로 업로드 됐다.");
+			System.out.println("파일사이즈는 " + thumbnail.getSize());
+			param.setThumbNail(filePath + storedFileName);
+		} else {
+			param.setThumbNail("-");
+		}
+
+
+		map.put("code", 200);
+		if(boardService.boardReg(param) == 1){
+			map.put("result", 1);
+		} else {
+			map.put("result", 2);
 		}
 
 		return map;
