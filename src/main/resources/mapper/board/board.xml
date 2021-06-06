@@ -59,6 +59,7 @@
              <if test="mbrNum != '' and mbrNum != null">
              , IF((SELECT COUNT(*) FROM TB_LIKE l WHERE  b.regNum = l.regNum and l.mbrNum = #{mbrNum}) = '1', 'Y', 'N') AS likeYn
              </if>
+             , (SELECT COUNT(*) FROM TB_SCRAP s where b.regNum = s.regNum) AS scrapCnt
           FROM TB_BOARD b
              , TB_MEMBER m
              , TB_CATEGORY c

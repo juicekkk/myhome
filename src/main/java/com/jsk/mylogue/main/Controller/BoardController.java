@@ -55,11 +55,12 @@ public class BoardController {
 			, HttpServletRequest req) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		boardVo param = new boardVo();
-		param.setTitle(title);
-		param.setSubTitle(subTitle);
+
+		param.setTitle(new String(title.getBytes("8859_1"),"utf-8"));
+		param.setSubTitle(new String(subTitle.getBytes("8859_1"),"utf-8"));
 		String categoryNum = boardService.categoryNum(categoryCode);
 		param.setCategoryNum(categoryNum);
-		param.setContents(contents);
+		param.setContents(new String(contents.getBytes("8859_1"),"utf-8"));
 		param.setShare(share);
 
 		//이미지업로드
@@ -73,12 +74,13 @@ public class BoardController {
 
 			//파일을 저장하기 위한 파일 객체 생성
 			long currentDate = System.currentTimeMillis();
+			String fileName = new String(storedFileName.getBytes("8859_1"),"utf-8");
 			String filePath = req.getSession().getServletContext().getRealPath("/")+"resources/images/contents/";
-			File file = new File(filePath + currentDate + "-" + storedFileName);
+			File file = new File(filePath + currentDate + "-" + fileName);
 			//파일 저장
 			thumbnail.transferTo(file);
 
-			param.setThumbNail("http://hproj.cafe24.com/resources/images/contents/" + currentDate + "-" + storedFileName);
+			param.setThumbNail("http://hproj.cafe24.com/resources/images/contents/" + currentDate + "-" + fileName);
 		} else {
 			param.setThumbNail("http://hproj.cafe24.com/resources/images/no_Image.png");
 		}
