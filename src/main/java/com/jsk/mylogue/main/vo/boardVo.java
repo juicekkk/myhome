@@ -6,6 +6,7 @@ public class boardVo {
     String subTitle;
     String category;
     String thumbNail;
+    String thumbNailSrc;
     String contents;
     String regNum;
     String hit;
@@ -199,5 +200,13 @@ public class boardVo {
 
     public void setScrapCnt(String scrapCnt) {
         this.scrapCnt = scrapCnt;
+    }
+
+    public String getThumbNailSrc() {
+        return thumbNailSrc;
+    }
+
+    public void setThumbNailSrc(String thumbNailSrc) {
+        this.thumbNailSrc = thumbNailSrc;
     }
 }

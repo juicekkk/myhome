@@ -19,7 +19,7 @@
                 AND b.categoryNum = #{categoryNum}
             </if>
            AND b.mbrNum = m.mbrNum
-           <if test="mbrNum != '' and mbrNum != null">
+           <if test='mbrNum != "" and mbrNum != null and like != "Y" and share != "Y"'>
            AND b.mbrNum = #{mbrNum}
            </if>
             <choose>
@@ -37,11 +37,11 @@
                 AND b.share = 'Y'
             </if>
             <if test='like != "" and like != null and like == "Y"'>
-                AND b.mbrNum = l.mbrNum
+                AND l.mbrNum = #{mbrNum}
                 AND b.regNum = l.regNum
             </if>
             <if test='scrap != "" and scrap != null and scrap == "Y"'>
-                AND b.mbrNum = s.mbrNum
+                AND s.mbrNum = #{mbrNum}
                 AND b.regNum = l.regNum
             </if>
     </select>
@@ -74,7 +74,7 @@
                 AND b.categoryNum = #{categoryNum}
             </if>
            AND b.mbrNum = m.mbrNum
-           <if test="mbrNum != '' and mbrNum != null">
+           <if test='mbrNum != "" and mbrNum != null and like != "Y" and share != "Y"'>
            AND b.mbrNum = #{mbrNum}
            </if>
            AND b.categoryNum = c.categoryNum
@@ -94,11 +94,11 @@
             AND b.share = 'Y'
             </if>
             <if test='like != "" and like != null and like == "Y"'>
-                AND b.mbrNum = l.mbrNum
+                AND l.mbrNum = #{mbrNum}
                 AND b.regNum = l.regNum
             </if>
             <if test='scrap != "" and scrap != null and scrap == "Y"'>
-                AND b.mbrNum = s.mbrNum
+                AND s.mbrNum = #{mbrNum}
                 AND b.regNum = l.regNum
             </if>
             <if test='share != "Y"'>
@@ -125,7 +125,7 @@
              , modDate )
         VALUES( #{mbrNum}
              , #{categoryNum}
-             , #{thumbNail}
+             , #{thumbNailSrc}
              , #{title}
              , #{subTitle}
              , #{contents}
