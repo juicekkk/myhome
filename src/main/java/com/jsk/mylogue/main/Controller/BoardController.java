@@ -240,20 +240,34 @@ public class BoardController {
 			, @RequestParam String share
 			, @RequestParam String mbrNum
 			, HttpServletRequest req) throws Exception {
+
+		logger.error("start");
+
+		logger.error("title : " + title);
+		logger.error("subTitle : " + subTitle);
+		logger.error("categoryCode : " + categoryCode);
+		logger.error("contents : " + contents);
+		logger.error("share : " + share);
+		logger.error("mbrNum : " + mbrNum);
+		logger.error("thumbnail : " + thumbnail);
+
+
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		boardVo param = new boardVo();
 
 		param.setTitle(new String(title.getBytes("8859_1"),"utf-8"));
 		param.setSubTitle(new String(subTitle.getBytes("8859_1"),"utf-8"));
-		String categoryNum = boardService.categoryNum(categoryCode);
-		param.setCategoryNum(categoryNum);
+		param.setCategoryNum(categoryCode);
 		param.setContents(new String(contents.getBytes("8859_1"),"utf-8"));
 		param.setShare(share);
 		param.setMbrNum(Integer.parseInt(mbrNum));
 
+		logger.error("start 111 param setting");
+
 		//이미지업로드
 		String url = "";
 		if(thumbnail != null){
+			logger.error("start 222 upload");
 			//파일명
 			String originalFile = thumbnail.getOriginalFilename();
 			//파일명 중 확장자만 추출                                                //lastIndexOf(".") - 뒤에 있는 . 의 index번호
@@ -270,9 +284,11 @@ public class BoardController {
 
 			param.setThumbNailSrc("http://hproj.cafe24.com/resources/images/contents/" + currentDate + "-" + fileName);
 		} else {
+			logger.error("start 333 not image");
 			param.setThumbNailSrc("http://hproj.cafe24.com/resources/images/no_Image.png");
 		}
 
+		logger.error("start 444 end");
 		map.put("code", 200);
 		if(boardService.boardReg(param) == 1){
 			map.put("result", 1);
@@ -282,53 +298,5 @@ public class BoardController {
 
 		return map;
 	}
-
-	@RequestMapping(value = "ttest.do", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public Object ttest(@RequestParam(value = "thumbNail", required = false) MultipartFile thumbnail
-			, @RequestBody boardVo params
-			, HttpServletRequest req) throws Exception {
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		boardVo param = new boardVo();
-
-		param.setTitle(new String(params.getTitle().getBytes("8859_1"),"utf-8"));
-		param.setSubTitle(new String(params.getSubTitle().getBytes("8859_1"),"utf-8"));
-		String categoryNum = boardService.categoryNum(params.getCategoryNum());
-		param.setCategoryNum(categoryNum);
-		param.setContents(new String(params.getContents().getBytes("8859_1"),"utf-8"));
-		param.setShare(params.getShare());
-
-		//이미지업로드
-		String url = "";
-		if(thumbnail != null){
-			//파일명
-			String originalFile = thumbnail.getOriginalFilename();
-			//파일명 중 확장자만 추출                                                //lastIndexOf(".") - 뒤에 있는 . 의 index번호
-			String originalFileExtension = originalFile.substring(originalFile.lastIndexOf("."));
-			String storedFileName = originalFile;
-
-			//파일을 저장하기 위한 파일 객체 생성
-			long currentDate = System.currentTimeMillis();
-			String fileName = new String(storedFileName.getBytes("8859_1"),"utf-8");
-			String filePath = req.getSession().getServletContext().getRealPath("/")+"resources/images/contents/";
-			File file = new File(filePath + currentDate + "-" + fileName);
-			//파일 저장
-			thumbnail.transferTo(file);
-
-			param.setThumbNailSrc("http://hproj.cafe24.com/resources/images/contents/" + currentDate + "-" + fileName);
-		} else {
-			param.setThumbNailSrc("http://hproj.cafe24.com/resources/images/no_Image.png");
-		}
-
-		map.put("code", 200);
-		if(boardService.boardReg(param) == 1){
-			map.put("result", 1);
-		} else {
-			map.put("result", 2);
-		}
-
-		return map;
-	}
-
 }
 

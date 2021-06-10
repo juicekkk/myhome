@@ -19,7 +19,7 @@
                 AND b.categoryNum = #{categoryNum}
             </if>
            AND b.mbrNum = m.mbrNum
-           <if test='mbrNum != "" and mbrNum != null and like != "Y" and share != "Y"'>
+           <if test='mbrNum != "" and mbrNum != null and like != "Y" and scrap != "Y"'>
            AND b.mbrNum = #{mbrNum}
            </if>
             <choose>
@@ -42,13 +42,13 @@
             </if>
             <if test='scrap != "" and scrap != null and scrap == "Y"'>
                 AND s.mbrNum = #{mbrNum}
-                AND b.regNum = l.regNum
+                AND b.regNum = s.regNum
             </if>
     </select>
 
     <select id="getList" parameterType="com.jsk.mylogue.main.vo.boardVo" resultType="com.jsk.mylogue.main.vo.boardVo">
         SELECT b.regNum
-             , b.thumbNail
+             , b.thumbNail AS thumbNailSrc
              , b.title
              , b.subTitle
              , b.hit
@@ -56,7 +56,7 @@
              , m.nickName
              , c.categoryName
              , (SELECT COUNT(*) FROM TB_LIKE l where b.regNum = l.regNum) AS likeCnt
-             <if test="mbrNum != '' and mbrNum != null">
+             <if test='mbrNum != "" and mbrNum != null and like != "Y" and scrap != "Y"'>
              , IF((SELECT COUNT(*) FROM TB_LIKE l WHERE  b.regNum = l.regNum and l.mbrNum = #{mbrNum}) = '1', 'Y', 'N') AS likeYn
              </if>
              , (SELECT COUNT(*) FROM TB_SCRAP s where b.regNum = s.regNum) AS scrapCnt
@@ -74,7 +74,7 @@
                 AND b.categoryNum = #{categoryNum}
             </if>
            AND b.mbrNum = m.mbrNum
-           <if test='mbrNum != "" and mbrNum != null and like != "Y" and share != "Y"'>
+           <if test='mbrNum != "" and mbrNum != null and like != "Y" and scrap != "Y"'>
            AND b.mbrNum = #{mbrNum}
            </if>
            AND b.categoryNum = c.categoryNum
@@ -99,7 +99,7 @@
             </if>
             <if test='scrap != "" and scrap != null and scrap == "Y"'>
                 AND s.mbrNum = #{mbrNum}
-                AND b.regNum = l.regNum
+                AND b.regNum = s.regNum
             </if>
             <if test='share != "Y"'>
             ORDER BY b.regDate DESC

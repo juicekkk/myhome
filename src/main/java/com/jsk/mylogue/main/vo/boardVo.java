@@ -1,11 +1,15 @@
 package com.jsk.mylogue.main.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+
 public class boardVo {
 
     String title;
     String subTitle;
     String category;
-    String thumbNail;
+    //String thumbNail;
     String thumbNailSrc;
     String contents;
     String regNum;
@@ -25,6 +29,7 @@ public class boardVo {
     String likeCnt;
     String scrapCnt;
     String likeYn;
+    MultipartFile thumbNail;
 
     public String getTitle() {
         return title;
@@ -48,14 +53,6 @@ public class boardVo {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public String getThumbNail() {
-        return thumbNail;
-    }
-
-    public void setThumbNail(String thumbNail) {
-        this.thumbNail = thumbNail;
     }
 
     public String getContents() {
@@ -208,5 +205,13 @@ public class boardVo {
 
     public void setThumbNailSrc(String thumbNailSrc) {
         this.thumbNailSrc = thumbNailSrc;
+    }
+
+    public MultipartFile getThumbNail() {
+        return thumbNail;
+    }
+
+    public void setThumbNail(MultipartFile thumbNail) {
+        this.thumbNail = thumbNail;
     }
 }
